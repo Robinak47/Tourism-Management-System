@@ -1,0 +1,15 @@
+<info>
+	<UserLogin type="Admin">
+		<name>Tanvir</name>
+		<pass>123</pass>
+	</UserLogin>
+	<UserLogin type="User">
+		<name>Rifat</name>
+		<pass>456</pass>
+	</UserLogin>
+	<UserLogin type="User">
+		<name>Robin</name>
+		<pass>789</pass>
+	</UserLogin>
+	
+</info>
