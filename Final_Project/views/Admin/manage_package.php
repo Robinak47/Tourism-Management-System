@@ -1,9 +1,13 @@
 <?php
+    include '../../controllers/packageController.php';
+    $packages=getAllPackage();
     session_start();
        if(!isset( $_SESSION["loggedinuser"]))
        {
            header("Location:../login.php");
        }
+
+
 
 ?>
 
@@ -47,32 +51,36 @@
         <div class="panel">
         
             <table>
-  <tr>
-  <th>#</th>
-  <th>NAME</th>
-  <th>TYPE</th>
-  <th>LOCATION</th>
-  <th>HOTEL NAME</th>
-  <th>TRANSPORT NAME</th>
-  <th>PRICE</th>
-  <th>GUIDE ID</th>
-  <th>FEAUTURE</th>
-  <th>CREATION DATE</th>
-  <th>ACTIONS</th>
-  </tr>
-  <tr>
-  <td>P_1</td>
-  <td>COX'S BAZAR TRIP</td>
-  <td>HOLIDAY</td>
-  <td>COX'S BAZAR</td>
-  <td>SEA COX'S</td>
-  <td>SOUDIA</td>
-  <td>$500</td>
-  <td>TG-1</td>
-  <td>Tour guide</td>
-  <td>27-01-2019</td>
-  <td><input type="button" name="action" value="view details" style="color:green"onClick="location.href='updatepackage.php'" value='updatepackage' ></td>
-</tr>
+                    <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>TYPE</th>
+                    <th>LOCATION</th>
+                    <th>PRICE</th>
+                    <th>FEAUTURE</th>
+                    <th>TRAVEL_DATE DATE</th>
+                    <th>ACTIONS</th>
+                    
+                    </tr>
+                    <tr>
+
+                    <?php
+				        foreach($packages as $package)
+				        {
+                            echo "<tr>";
+                                echo "<td>".$package["p_id"]."</td>";
+                                echo "<td>".$package["p_name"]."</td>";
+                                echo "<td>".$package["type"]."</td>";
+                                echo "<td>".$package["location"]."</td>";
+                                echo "<td>".$package["price"]."</td>";
+                                echo "<td>".$package["features"]."</td>";
+                                echo "<td>".$package["travel_date"]."</td>";
+                                echo '<td><a href="updatepackage.php?id='.$package["p_id"].'" class="btn1 btn1-success">Edit</a></td>';
+                            echo "</tr>";
+				        }
+			        ?>
+
+                   
 
   
         </table>

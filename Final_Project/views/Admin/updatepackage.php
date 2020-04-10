@@ -1,9 +1,83 @@
 <?php
+    include '../../controllers/packageController.php';
+    $pid = $_GET["id"];
+    $package=getPackage($pid);
+
+    $price="";
+    $err_price="";
+
+    $feaure="";
+    $err_feature="";
+
+    $date="";
+    $err_date="";
+
+    $has_error=false;
+
+
     session_start();
        if(!isset( $_SESSION["loggedinuser"]))
        {
            header("Location:../login.php");
        }
+
+       if(isset($_POST['submit']))
+	    {	
+                    
+                    if(empty($_POST['date']))
+                    {
+                        $err_date="*date requiers";
+                        $has_error=true;
+                
+                        
+                    }
+                    else
+                    {
+                    $date=$_POST['date'];
+                    }
+                   
+                
+                    if(empty($_POST['price']))
+                    {
+                        $err_price="*price Requires";
+                        $has_error=true;
+                
+                        
+                    }
+                    else
+                    {
+                        $price=$_POST['price'];
+                        
+                    }
+
+                    if(empty($_POST['details']))
+                    {
+                        $err_feature="*features Requires";
+                        $has_error=true;
+                
+                        
+                    }
+                    else
+                    {
+                        $feature=$_POST['details'];
+                    }
+
+
+                    if(!$has_error)
+                    {
+                        editPackage($pid,$price,$date,$feature);
+                    }
+
+                   
+                    
+    
+  
+    
+ 
+		
+	
+		
+    }
 
 ?>
 
@@ -44,53 +118,13 @@
         </div>
         <div class="text" >Update Package</i>
         </div>
-
+    <form method="post" action="">
         <div class="panel">
             <table  > 
                 <tr>
                     <td> <h3>Package Name:</h3></td>
                     
-                    <td><h3><input type="text" name="pname" value="COX'S BAZAR TRIP" ></h3></td>
-                 
-
-                </tr>
-
-                <tr>
-                    <td> <h3>Location:</h3></td>
-                    
-                    <td style="text-align='right'"><h3><input type="text" name="loc" value="COX'S BAZAR"></h3></td>
-                 
-
-                </tr>
-
-                <tr>
-                    <td> <h3>Hotel NAME:</h3></td>
-                    
-                    <td style="text-align='right'"><h3><input type="text" name="hotelid" value="SEA COX'S" ></h3></td>
-                 
-
-                </tr>
-
-                <tr>
-                    <td> <h3>Transport NAME:</h3></td>
-                    
-                    <td style="text-align='right'"><h3><input type="text" name="transpotid" value="SOUDIA" ></h3></td>
-                 
-
-                </tr>
-
-                <tr>
-                    <td> <h3>Price:</h3></td>
-                    
-                    <td style="text-align='right'"><h3><input type="text" name="price" value="$500" ></h3></td>
-                 
-
-                </tr>
-
-                <tr>
-                    <td> <h3>Guide ID:</h3></td>
-                    
-                    <td><h3><input type="text" name="Guide" value="TG_1" ></h3></td>
+                    <td><h3><input type="text" name="pname" value="<?php echo $package["p_name"]?>" readonly ></h3></td>
                  
 
                 </tr>
@@ -98,34 +132,57 @@
                 <tr>
                     <td> <h3>Type:</h3></td>
                     
-                    <td><h3><input type="radio" name="type" value="Holiday" checked="checked" > Holiday <input type="radio" name="type" value="Couple trip" > Couple trip <input type="radio" name="type" value="Bussiness Trip" > Bussiness Trip</h3></td>
+                    <td style="text-align='right'"><h3><input type="text" name="type" value="<?php echo $package["type"]?>" readonly></h3></td>
                  
 
                 </tr>
 
                 <tr>
-                    <td> <h3>Package FEATURE:</h3></td>
+                    <td> <h3>Location:</h3></td>
                     
-                    <td><h3><input type="text" name="details" value="TOUR GUIDE" ></h3></td>
+                    <td style="text-align='right'"><h3><input type="text" name="loc" value="<?php echo $package["location"]?>" readonly></h3></td>
                  
 
                 </tr>
 
+                
+
+              
 
                 <tr>
-                    <td> <h3>Package Image:</h3></td>
+                    <td> <h3>Price:</h3></td>
                     
-                    <td>
-                        <div class="upload-btn-wrapper">
-                             <button class="btn1">Upload a Image</button>
-                                <input type="file" name="myfile" />
-                        </div>
-                
-                
-                    </td>
+                    <td style="text-align='right'"><h3><input type="text" name="price" value="<?php echo $package["price"]?>" ></h3></td>
+                    <td><span style="color:red"><?php echo $err_price;?></span></td>
                  
 
                 </tr>
+
+                
+
+                
+
+                <tr>
+                    <td> <h3>Package Feature:</h3></td>
+                    
+                    <td><h3><input type="text" name="details" value="<?php echo $package["features"]?>" ></h3></td>
+                    <td><span style="color:red"><?php echo $err_feature;?></span></td>
+                 
+
+                </tr>
+
+                <tr>
+                    <td> <h3>Travel Date:</h3></td>
+                    
+                    <td><h3><input type="date" name="date" value="<?php echo $package["travel_date"]?>"></h3></td>
+                    <td><span style="color:red"><?php echo $err_date;?></span></td>
+                    
+                 
+
+                </tr>
+
+
+                
 
 
             </table>
@@ -152,7 +209,7 @@
         
       
         
-
+    </form>
         
     </body>
 </html>
