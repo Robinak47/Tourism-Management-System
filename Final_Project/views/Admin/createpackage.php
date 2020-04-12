@@ -5,6 +5,13 @@
            header("Location:../login.php");
        }
 
+
+       
+                
+
+
+               
+
 ?>
 
 
@@ -13,6 +20,189 @@
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/createpackage.css">
+
+        <script type="text/javascript">
+            function validate() {
+
+                            var error="";
+                            var chc="";
+                            
+                            var name = document.getElementById( "t1" );
+                            var loca = document.getElementById( "t2" );
+                            var type1 = document.getElementById( "t4" );
+                            var type2 = document.getElementById( "t11" );
+                            var type3 = document.getElementById( "t12" );
+                            var price = document.getElementById( "t3" );
+                            var feature = document.getElementById( "t5" );
+                            var date = document.getElementById( "t6" );
+                            var image = document.getElementById( "t7" );
+                            var FileUploadPath = image.value;
+                            var Extension = FileUploadPath.substring( FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+                            
+                            if( name.value == "" )
+                            {
+                            error = " You Have To Write Your Name. ";
+                            
+                            document.getElementById( "na" ).innerHTML = error;
+
+                            chc="ok";
+                            
+
+                           
+                            }
+
+                            if( name.value != "" )
+                            {
+                            error = "";
+                            
+                            document.getElementById( "na" ).innerHTML = error;
+                            
+
+                           
+                            }
+
+
+                            if( loca.value == "" )
+                            {
+                            error = " You Have To Write location. ";
+                            
+                            document.getElementById( "na1" ).innerHTML = error;
+
+                            chc="ok";
+                           
+
+                           
+                            }
+
+                            if( loca.value != "" )
+                            {
+                            error = "";
+                            
+                            document.getElementById( "na1" ).innerHTML = error;
+                            
+
+                           
+                            }
+
+                            if( price.value == "" )
+                            {
+                            error = " You Have To Write price. ";
+                            
+                            document.getElementById( "na2" ).innerHTML = error;
+                            chc="ok";
+
+                           
+                            }
+
+                            if( price.value != "" )
+                            {
+                            error = "";
+                            
+                            document.getElementById( "na2" ).innerHTML = error;
+                            
+
+                           
+                            }
+
+                            if( type1.checked == false && type2.checked == false & type3.checked == false )
+                            {
+                            error = " You Have To select a type. ";
+                            
+                            document.getElementById( "na3" ).innerHTML = error;
+                            chc="ok";
+                            
+
+                           
+                            }
+
+                            if( type1.checked ==true || type2.checked ==true || type3.checked ==true )
+                            {
+                            error = "";
+                            
+                            document.getElementById( "na3" ).innerHTML = error;
+                            
+
+                           
+                            }
+
+                            if( feature.value == "" )
+                            {
+                            error = " You Have To Write feature. ";
+                            
+                            document.getElementById( "na4" ).innerHTML = error;
+                            chc="ok";
+
+                           
+                            }
+
+                            if( feature.value != "" )
+                            {
+                            error = "";
+                            
+                            document.getElementById( "na4" ).innerHTML = error;
+                            
+
+                           
+                            }
+
+                            if( date.value == "" )
+                            {
+                            error = " You Have To select a date. ";
+                            
+                            document.getElementById( "na5" ).innerHTML = error;
+                            chc="ok";
+
+                           
+                            }
+
+                            if( date.value != "" )
+                            {
+                            error = "";
+                            
+                            document.getElementById( "na5" ).innerHTML = error;
+                            
+                            }
+
+
+                            
+
+                          if (Extension != "gif" && Extension != "png" && Extension != "bmp" && Extension != "jpeg" && Extension != "jpg")
+                          {
+                            error = "please upload an image. File types of GIF, PNG, JPG, JPEG and BMP. ";
+                            
+                            document.getElementById( "na6" ).innerHTML = error;
+                            chc="ok";
+                          }
+
+                          if (Extension == "gif" || Extension == "png" || Extension == "bmp"|| Extension == "jpeg" || Extension == "jpg")
+                          {
+
+                            error = "";
+                            
+                            document.getElementById( "na6" ).innerHTML = error;
+
+                          }
+
+                            
+            
+
+                           
+
+                            
+                            if(chc!="")
+                            {
+                                return false;
+                            }
+                        
+                            else
+                            {
+                            return true;
+                            }
+                    }
+
+           
+
+</script>
     </head>
     <body>
        
@@ -45,12 +235,17 @@
         <div class="text" >Create Package</i>
         </div>
 
+        <form method="POST" action="" onsubmit="return validate();">
+
         <div class="panel">
             <table  > 
                 <tr>
                     <td> <h3>Package Name:</h3></td>
                     
-                    <td><h3><input type="text" name="pname" placeholder="package name" ></h3></td>
+                    <td><h3><input type="text"  name="pname"id="t1" placeholder="package name" ></h3></td>
+
+                    <td> <span id="na" style="color:red"></td>
+
                  
 
                 </tr>
@@ -58,55 +253,47 @@
                 <tr>
                     <td> <h3>Location:</h3></td>
                     
-                    <td style="text-align='right'"><h3><input type="text" name="loc" placeholder="Location" ></h3></td>
+                    <td style="text-align='right'"><h3><input type="text"  name="loc" id="t2" placeholder="Location" ></h3></td>
+                    <td> <span id="na1" style="color:red"></td>
                  
 
                 </tr>
 
-                <tr>
-                    <td> <h3>Hotel Name:</h3></td>
-                    
-                    <td style="text-align='right'"><h3><input type="text" name="hotelid" placeholder="Hotel Name" ></h3></td>
-                 
-
-                </tr>
-
-                <tr>
-                    <td> <h3>Transport Name:</h3></td>
-                    
-                    <td style="text-align='right'"><h3><input type="text" name="transpotid" placeholder="Transport Name" ></h3></td>
-                 
-
-                </tr>
+                
 
                 <tr>
                     <td> <h3>Price:</h3></td>
                     
-                    <td style="text-align='right'"><h3><input type="text" name="price" placeholder="price" ></h3></td>
-                 
+                    <td style="text-align='right'"><h3><input type="text" name="price" id="t3" placeholder="price" ></h3></td>
+                    <td> <span id="na2" style="color:red"></td>
 
                 </tr>
 
-                <tr>
-                    <td> <h3>Guide ID:</h3></td>
-                    
-                    <td><h3><input type="text" name="Guide" placeholder="Tour Guide ID" ></h3></td>
-                 
-
-                </tr>
+                
 
                 <tr>
                     <td> <h3>Type:</h3></td>
                     
-                    <td><h3><input type="radio" name="type" value="Holiday" > Holiday <input type="radio" name="type" value="Couple trip" > Couple trip <input type="radio" name="type" value="Bussiness Trip" > Bussiness Trip</h3></td>
-                 
+                    <td><h3><input type="radio" name="type" id="t4" value="Holiday" > Holiday <input type="radio" name="type" id="t11" value="Couple trip" > Couple trip <input type="radio" name="type" id="t12" value="Bussiness Trip" > Bussiness Trip</h3></td>
+                    <td><br> <span id="na3" style="color:red"></td>
 
                 </tr>
 
                 <tr>
                     <td> <h3>Package Feature:</h3></td>
                     
-                    <td><h3><input type="text" name="details" placeholder="Project Details" ></h3></td>
+                    <td><h3><input type="text" name="details" id="t5" placeholder="Project Details" ></h3></td>
+                    <td><br> <span id="na4" style="color:red"></td>
+                 
+
+                </tr>
+
+                <tr>
+                    <td> <h3>Travel Date:</h3></td>
+                    
+                    <td><h3><input type="date" name="date" id="t6" style="margin-right:200px"></h3></td>
+                    <td> <span id="na5" style="color:red"></td>
+                  
                  
 
                 </tr>
@@ -118,7 +305,8 @@
                     <td>
                         <div class="upload-btn-wrapper">
                              <button class="btn1">Upload a Image</button>
-                                <input type="file" name="myfile" />
+                                <input type="file" name="myfile" id="t7" />
+                                <td> <span id="na6" style="color:red"></td>
                         </div>
                 
                 
@@ -137,6 +325,7 @@
             
            
         </div>
+        </form>
 
     
       
