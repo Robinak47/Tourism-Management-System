@@ -1,8 +1,38 @@
 <?php
+    include '../../controllers/packageController.php';
     session_start();
        if(!isset( $_SESSION["loggedinuser"]))
        {
            header("Location:../login.php");
+       }
+
+       if(isset($_POST['submit']))
+       {    
+
+           $x=rand(1,10000000);
+           $pid="P-".$x;
+           $pname=$_POST['pname'];
+           $type=$_POST['type'];
+           $loc=$_POST['loc'];
+           $price=$_POST['price'];
+           $feature=$_POST['details'];
+           $tr=$_POST['date'];
+           $aid=$_SESSION["loggedinuser"];
+
+
+           $target_dir="../../storage/package_image/";
+           $target_file = $target_dir.basename($_FILES["image"]["name"]);
+
+       
+
+             
+
+           $uploadOk = 1;
+           $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+           move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+
+           insertPackage($pid,$pname,$type,$loc,$target_file,$price,$feature,$tr,$aid);
+
        }
 
 
@@ -35,7 +65,7 @@
                             var price = document.getElementById( "t3" );
                             var feature = document.getElementById( "t5" );
                             var date = document.getElementById( "t6" );
-                            var image = document.getElementById( "t7" );
+                            var image = document.getElementByName( "image" );
                             var FileUploadPath = image.value;
                             var Extension = FileUploadPath.substring( FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
                             
@@ -166,7 +196,7 @@
 
                             
 
-                          if (Extension != "gif" && Extension != "png" && Extension != "bmp" && Extension != "jpeg" && Extension != "jpg")
+                            if (Extension != "gif" && Extension != "png" && Extension != "bmp" && Extension != "jpeg" && Extension != "jpg")
                           {
                             error = "please upload an image. File types of GIF, PNG, JPG, JPEG and BMP. ";
                             
@@ -235,7 +265,7 @@
         <div class="text" >Create Package</i>
         </div>
 
-        <form method="POST" action="" onsubmit="return validate();">
+        <form method="POST" action="" onsubmit="return validate();" enctype="multipart/form-data">
 
         <div class="panel">
             <table  > 
@@ -303,9 +333,8 @@
                     <td> <h3>Package Image:</h3></td>
                     
                     <td>
-                        <div class="upload-btn-wrapper">
-                             <button class="btn1">Upload a Image</button>
-                                <input type="file" name="myfile" id="t7" />
+                        
+                                <input type="file" name="image" enctype="multipart/form-data">
                                 <td> <span id="na6" style="color:red"></td>
                         </div>
                 
