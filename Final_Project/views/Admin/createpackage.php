@@ -35,6 +35,8 @@
 
        }
 
+       
+
 
        
                 
@@ -50,12 +52,13 @@
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/createpackage.css">
-
         <script type="text/javascript">
             function validate() {
 
                             var error="";
                             var chc="";
+                           
+                            
                             
                             var name = document.getElementById( "t1" );
                             var loca = document.getElementById( "t2" );
@@ -65,7 +68,7 @@
                             var price = document.getElementById( "t3" );
                             var feature = document.getElementById( "t5" );
                             var date = document.getElementById( "t6" );
-                            var image = document.getElementByName( "image" );
+                            var image = document.getElementById( "im" );
                             var FileUploadPath = image.value;
                             var Extension = FileUploadPath.substring( FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
                             
@@ -76,6 +79,7 @@
                             document.getElementById( "na" ).innerHTML = error;
 
                             chc="ok";
+                            
                             
 
                            
@@ -221,18 +225,28 @@
                             
                             if(chc!="")
                             {
+                              
                                 return false;
+
                             }
                         
                             else
                             {
+                               
                             return true;
+                            
                             }
+                    }
+
+                    function remove()
+                    {
+                        alert("done");
                     }
 
            
 
-</script>
+        </script>
+        
     </head>
     <body>
        
@@ -265,7 +279,7 @@
         <div class="text" >Create Package</i>
         </div>
 
-        <form method="POST" action="" onsubmit="return validate();" enctype="multipart/form-data">
+        <form method="POST" action=""  onsubmit="return validate();" enctype="multipart/form-data">
 
         <div class="panel">
             <table  > 
@@ -334,7 +348,7 @@
                     
                     <td>
                         
-                                <input type="file" name="image" enctype="multipart/form-data">
+                                <input type="file" name="image" id="im" enctype="multipart/form-data">
                                 <td> <span id="na6" style="color:red"></td>
                         </div>
                 
@@ -347,7 +361,7 @@
 
             </table>
 
-            <h3><input type="submit" name="submit" value="Submit"> <input type="button" name="reset" value="Reset"></h3>
+            <h3><input type="submit" name="submit" value="Submit"> <input type="button" name="reset" value="Reset" onclick="remove();"></h3>
 
             
 
