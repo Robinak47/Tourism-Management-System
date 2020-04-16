@@ -7,8 +7,19 @@
 	function getUser($id)
 	{
 		$query="SELECT * FROM login WHERE id='$id'";
+		
 		$users=get($query);
-		return $users[0];
+
+		if($users != null)
+		{
+			return $users[0];
+		}
+
+		else{
+			return null;
+		}
+		
+		
 	}
 	
 	
