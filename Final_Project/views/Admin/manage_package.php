@@ -49,6 +49,8 @@
         </div>
 
         <div class="panel">
+        <div id="table-wrapper">
+        <div id="table-scroll">
         
             <table>
                     <tr>
@@ -85,6 +87,9 @@
   
         </table>
     </div>
+    </div>
+        
+        </div>
 
     
       

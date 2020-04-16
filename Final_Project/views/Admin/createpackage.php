@@ -57,9 +57,6 @@
 
                             var error="";
                             var chc="";
-                           
-                            
-                            
                             var name = document.getElementById( "t1" );
                             var loca = document.getElementById( "t2" );
                             var type1 = document.getElementById( "t4" );
@@ -79,9 +76,6 @@
                             document.getElementById( "na" ).innerHTML = error;
 
                             chc="ok";
-                            
-                            
-
                            
                             }
 
@@ -90,8 +84,6 @@
                             error = "";
                             
                             document.getElementById( "na" ).innerHTML = error;
-                            
-
                            
                             }
 
@@ -104,8 +96,6 @@
 
                             chc="ok";
                            
-
-                           
                             }
 
                             if( loca.value != "" )
@@ -113,8 +103,6 @@
                             error = "";
                             
                             document.getElementById( "na1" ).innerHTML = error;
-                            
-
                            
                             }
 
@@ -240,7 +228,20 @@
 
                     function remove()
                     {
-                        alert("done");
+                        document.getElementById( "na" ).innerHTML ="";
+                        document.getElementById( "na1" ).innerHTML ="";
+                        document.getElementById( "na2" ).innerHTML ="";
+                        document.getElementById( "na3" ).innerHTML ="";
+                        document.getElementById( "na4" ).innerHTML ="";
+                        document.getElementById( "na5" ).innerHTML ="";
+                        document.getElementById( "na6" ).innerHTML ="";
+                        document.getElementById( "t1" ).value="";
+                        document.getElementById( "t2" ).value="";
+                        document.getElementById( "t3" ).value="";
+                        document.getElementById( "t5" ).value="";
+                        document.getElementById( "t6" ).value="";
+                        document.getElementById( "im" ).value="";
+                       
                     }
 
            
