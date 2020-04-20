@@ -1,4 +1,6 @@
 <?php
+include '../../controllers/book_trackingController.php';
+$bts=getAllBook_Tracking();
     session_start();
        if(!isset( $_SESSION["loggedinuser"]))
        {
@@ -25,7 +27,7 @@
                     <button class="btn" onClick="location.href='home.php'" value='home'><i class="fa fa-home">&nbsp;&nbsp;&nbsp;Home</i></button><br>
                     <button class="btn" onClick="location.href='manage_package.php'" value='manage_package'><i class="fa fa-plane">&nbsp;&nbsp;&nbsp;Manage Tour Packages</i></button><br>
                     <button class="btn" onClick="location.href='createpackage.php'" value='createpackage'><i class="fa fa-plane">&nbsp;&nbsp;&nbsp;Create Package</i></button><br>
-                    <button class="btn" onClick="location.href='manageuser.php'" value='manageuser'><i class="fa fa-user-circle">&nbsp;&nbsp;&nbsp;Manage User</i></button><br>
+                    <button class="btn" onClick="location.href='manageuser.php'" value='manageuser'><i class="fa fa-user-circle">&nbsp;&nbsp;&nbsp;Manage Customer</i></button><br>
                     <button class="btn" onClick="location.href='managebooking.php'" value='managebooking'><i class="fa fa-calendar-check-o">&nbsp;&nbsp;&nbsp;Manage Bookings</i></button><br>
                     <button class="btn" onClick="location.href='addemployee.php'" value='addemployee'><i class="fa fa-user-plus" >&nbsp;&nbsp;&nbsp;Add Employee</i></button><br>
                     <button class="btn" onClick="location.href='manageemployee.php'" value='managemployee'><i class="fa fa-id-badge">&nbsp;&nbsp;&nbsp;Manage Employee</i></button><br>
@@ -46,26 +48,38 @@
         </div>
 
         <div class="panel">
+        <div id="table-wrapper">
+        <div id="table-scroll">
         
             <table>
   <tr>
+  <th>ID</th>
   <th>CUSTOMER ID</th>
-  <th>MESSAGE</th>
   <th>BOOKING ID</th>
-  <th>ACCEPT</th>
-  <th>REJECT</th>
+  <th>ACTION</th>
+    </tr>
+
   
-  </tr>
-  <tr>
-  <td>C-1</td>
-  <td>WANT'S TO CANCLE BOOKING</td>
-  <td>BK-1</td>
-  <td><input type="button" name="accept" value="accept" style="color:green" ></td>
-  <td><input type="button" name="reject" value="reject" style="color:red" ></td>
-</tr>
+  <?php
+				        foreach($bts as $bt)
+				        {
+                            echo "<tr>";
+                                echo "<td>".$bt["bt_id"]."</td>";
+                                echo "<td>".$bt["c_id"]."</td>";
+                                echo "<td>".$bt["b_id"]."</td>"; 
+                                echo '<td><a href="action.php?id='.$bt["bt_id"].'" class="btn1 btn1-success">Edit</a></td>';
+                            echo "</tr>";
+				        }
+                    ?>
+   
+
+                    
+                
 
   
         </table>
+    </div>
+    </div>
     </div>
 
     

@@ -46,7 +46,15 @@
                     }
                     else
                     {
-                        $price=$_POST['price'];
+                        
+                        if(is_numeric($_POST['price']))
+                        {
+                            $price=$_POST['price'];
+                        }
+                        else{
+                            $err_price="*price must be a number";
+                            $has_error=true;
+                        }
                         
                     }
 
@@ -60,6 +68,16 @@
                     else
                     {
                         $feature=$_POST['details'];
+
+                        if (ctype_space($feature)) {
+                            $err_feature="*features can not be only spacces";
+                            $has_error=true;
+                        }
+                        else if(!preg_match('/^[a-zA-Z\s]+$/',$feature))
+                        {
+                            $err_feature="*features only contains letter and space";
+                            $has_error=true;
+                        }
                     }
 
 
@@ -67,17 +85,14 @@
                     {
                         editPackage($pid,$price,$date,$feature);
                     }
-
-                   
-                    
-    
-  
-    
- 
-		
-	
 		
     }
+
+    if(isset($_POST['delete']))
+    {
+        deletePackage($pid);
+    }
+    
 
 ?>
 
@@ -100,7 +115,7 @@
                     <button class="btn" onClick="location.href='home.php'" value='home'><i class="fa fa-home">&nbsp;&nbsp;&nbsp;Home</i></button><br>
                     <button class="btn" onClick="location.href='manage_package.php'" value='manage_package'><i class="fa fa-plane">&nbsp;&nbsp;&nbsp;Manage Tour Packages</i></button><br>
                     <button class="btn" onClick="location.href='createpackage.php'" value='createpackage'><i class="fa fa-plane">&nbsp;&nbsp;&nbsp;Create Package</i></button><br>
-                    <button class="btn" onClick="location.href='manageuser.php'" value='manageuser'><i class="fa fa-user-circle">&nbsp;&nbsp;&nbsp;Manage User</i></button><br>
+                    <button class="btn" onClick="location.href='manageuser.php'" value='manageuser'><i class="fa fa-user-circle">&nbsp;&nbsp;&nbsp;Manage Customer</i></button><br>
                     <button class="btn" onClick="location.href='managebooking.php'" value='managebooking'><i class="fa fa-calendar-check-o">&nbsp;&nbsp;&nbsp;Manage Bookings</i></button><br>
                     <button class="btn" onClick="location.href='addemployee.php'" value='addemployee'><i class="fa fa-user-plus" >&nbsp;&nbsp;&nbsp;Add Employee</i></button><br>
                     <button class="btn" onClick="location.href='manageemployee.php'" value='managemployee'><i class="fa fa-id-badge">&nbsp;&nbsp;&nbsp;Manage Employee</i></button><br>
@@ -187,7 +202,7 @@
 
             </table>
 
-            <h3><input type="submit" name="submit" value="UPDATE"> <input type="button" name="delete" value="DELETE"></h3>
+            <h3><input type="submit" name="submit" value="UPDATE"> <input type="submit" name="delete" value="DELETE" style="background-color:red;"></h3>
 
             
 

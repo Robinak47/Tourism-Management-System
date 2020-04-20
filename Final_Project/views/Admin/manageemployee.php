@@ -1,4 +1,6 @@
 <?php
+    include '../../controllers/employeeController.php';
+    $emps=getAllEmployee();
     session_start();
        if(!isset( $_SESSION["loggedinuser"]))
        {
@@ -25,7 +27,7 @@
                     <button class="btn" onClick="location.href='home.php'" value='home'><i class="fa fa-home">&nbsp;&nbsp;&nbsp;Home</i></button><br>
                     <button class="btn" onClick="location.href='manage_package.php'" value='manage_package'><i class="fa fa-plane">&nbsp;&nbsp;&nbsp;Manage Tour Packages</i></button><br>
                     <button class="btn" onClick="location.href='createpackage.php'" value='createpackage'><i class="fa fa-plane">&nbsp;&nbsp;&nbsp;Create Package</i></button><br>
-                    <button class="btn" onClick="location.href='manageuser.php'" value='manageuser'><i class="fa fa-user-circle">&nbsp;&nbsp;&nbsp;Manage User</i></button><br>
+                    <button class="btn" onClick="location.href='manageuser.php'" value='manageuser'><i class="fa fa-user-circle">&nbsp;&nbsp;&nbsp;Manage Customer</i></button><br>
                     <button class="btn" onClick="location.href='managebooking.php'" value='managebooking'><i class="fa fa-calendar-check-o">&nbsp;&nbsp;&nbsp;Manage Bookings</i></button><br>
                     <button class="btn" onClick="location.href='addemployee.php'" value='addemployee'><i class="fa fa-user-plus" >&nbsp;&nbsp;&nbsp;Add Employee</i></button><br>
                     <button class="btn" onClick="location.href='manageemployee.php'" value='managemployee'><i class="fa fa-id-badge">&nbsp;&nbsp;&nbsp;Manage Employee</i></button><br>
@@ -46,14 +48,14 @@
         </div>
 
         <div class="panel">
+        <div id="table-wrapper">
+        <div id="table-scroll">
         
             <table>
   <tr>
   <th>ID</th>
   <th>Name</th>
-  <th>TYPE</th>
   <th>DOB</th>
-  <th>AGE</th>
   <th>GENDER</th>
   <th>PHONE NO</th>
   <th>EMAIL</th>
@@ -62,22 +64,28 @@
   <th>ACTIONS</th>
   
   </tr>
-  <tr>
-  <td>E-1</td>
-  <td>JACK</td>
-  <td>EMPLOYEE</td>
-  <td>12-07-1997</td>
-  <td>24</td>
-  <td>MALE</td>
-  <td>01626485694</td>
-  <td>XY@GMAIL.COM</td>
-  <td>MIRPUR 10,DHAKA</td>
-  <td>120000</td>
-  <td><input type="button" name="action" value="view actions" style="color:green" onClick="location.href='updateemployee.php'" value='updateemployee'></td>
-</tr>
+  <?php
+				        foreach($emps as $emp)
+				        {
+                            echo "<tr>";
+                                echo "<td>".$emp["e_id"]."</td>";
+                                echo "<td>".$emp["name"]."</td>";
+                                echo "<td>".$emp["dob"]."</td>";
+                                echo "<td>".$emp["gender"]."</td>";
+                                echo "<td>".$emp["mobile"]."</td>";
+                                echo "<td>".$emp["email"]."</td>";
+                                echo "<td>".$emp["address"]."</td>";
+                                echo "<td>".$emp["salary"]."</td>";
+                                echo '<td><a href="updateemployee.php?id='.$emp["e_id"].'" class="btn1 btn1-success">Edit</a></td>';
+                            echo "</tr>";
+				        }
+                    ?>
+             
 
   
         </table>
+    </div>
+    </div>
     </div>
 
     

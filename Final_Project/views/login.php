@@ -37,7 +37,7 @@
 		if(!$has_error)
 		{
             $user=getUser($uid);
-            if($uid ==$user["id"] && $pass ==$user["password"] )
+            if($uid ==$user["id"] && $pass ==$user["password"] && $user["status"]=="active" )
                 {
                     $type =$user["type"] ;
 

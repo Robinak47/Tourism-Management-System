@@ -1,4 +1,6 @@
 <?php
+include '../../controllers/reviewController.php';
+$revs=getAllReview();
     session_start();
        if(!isset( $_SESSION["loggedinuser"]))
        {
@@ -25,7 +27,7 @@
                     <button class="btn" onClick="location.href='home.php'" value='home'><i class="fa fa-home">&nbsp;&nbsp;&nbsp;Home</i></button><br>
                     <button class="btn" onClick="location.href='manage_package.php'" value='manage_package'><i class="fa fa-plane">&nbsp;&nbsp;&nbsp;Manage Tour Packages</i></button><br>
                     <button class="btn" onClick="location.href='createpackage.php'" value='createpackage'><i class="fa fa-plane">&nbsp;&nbsp;&nbsp;Create Package</i></button><br>
-                    <button class="btn" onClick="location.href='manageuser.php'" value='manageuser'><i class="fa fa-user-circle">&nbsp;&nbsp;&nbsp;Manage User</i></button><br>
+                    <button class="btn" onClick="location.href='manageuser.php'" value='manageuser'><i class="fa fa-user-circle">&nbsp;&nbsp;&nbsp;Manage Customer</i></button><br>
                     <button class="btn" onClick="location.href='managebooking.php'" value='managebooking'><i class="fa fa-calendar-check-o">&nbsp;&nbsp;&nbsp;Manage Bookings</i></button><br>
                     <button class="btn" onClick="location.href='addemployee.php'" value='addemployee'><i class="fa fa-user-plus" >&nbsp;&nbsp;&nbsp;Add Employee</i></button><br>
                     <button class="btn" onClick="location.href='manageemployee.php'" value='managemployee'><i class="fa fa-id-badge">&nbsp;&nbsp;&nbsp;Manage Employee</i></button><br>
@@ -46,6 +48,8 @@
         </div>
 
         <div class="panel">
+        <div id="table-wrapper">
+        <div id="table-scroll">
         
             <table>
   <tr>
@@ -56,16 +60,25 @@
  
   
   </tr>
-  <tr>
-  <td>R-1</td>
-  <td>C-1</td>
-  <td>BK-1</td>
-  <td>Good,but need to improve</td>
-  
-</tr>
+  <?php
+				        foreach($revs as $rev)
+				        {
+                            echo "<tr>";
+                                echo "<td>".$rev["r_id"]."</td>";
+                                echo "<td>".$rev["c_id"]."</td>";
+                                echo "<td>".$rev["b_id"]."</td>";
+                                echo "<td>".$rev["comment"]."</td>";
+                                
+                                
+                            echo "</tr>";
+				        }
+                    ?>
+       
 
   
         </table>
+    </div>
+    </div>
     </div>
 
     

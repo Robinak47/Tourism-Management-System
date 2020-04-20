@@ -6,7 +6,7 @@
 
 	function getAllPackage()
 	{
-		$query ="SELECT * FROM packages";
+		$query ="SELECT * FROM packages WHERE status='active'";
 		$products = get($query);
 		return $products;	
     }
@@ -28,11 +28,20 @@
 	
 	function insertPackage($id,$name,$type,$loc,$image,$price,$feature,$tr,$aid)
 	{
-		$query="INSERT INTO packages VALUES('$id','$name','$type','$loc','$image','$price','$feature','$tr','$aid')";
+		$query="INSERT INTO packages VALUES('$id','$name','$type','$loc','$image','$price','$feature','$tr','$aid','active')";
 		execute($query);
 		
 
 	}
+
+	function deletePackage($id)
+    {
+        $query="UPDATE packages SET status='inactive' WHERE p_id='$id'";
+		
+		execute($query);
+		header("Location:../../views/Admin/manage_package.php");
+	}
+	
 
 	
 ?>

@@ -1,4 +1,6 @@
 <?php
+include '../../controllers/customerController.php';
+$cms=getAllCustomer();
     session_start();
        if(!isset( $_SESSION["loggedinuser"]))
        {
@@ -26,7 +28,7 @@
                     <button class="btn" onClick="location.href='home.php'" value='home'><i class="fa fa-home">&nbsp;&nbsp;&nbsp;Home</i></button><br>
                     <button class="btn" onClick="location.href='manage_package.php'" value='manage_package'><i class="fa fa-plane">&nbsp;&nbsp;&nbsp;Manage Tour Packages</i></button><br>
                     <button class="btn" onClick="location.href='createpackage.php'" value='createpackage'><i class="fa fa-plane">&nbsp;&nbsp;&nbsp;Create Package</i></button><br>
-                    <button class="btn" onClick="location.href='manageuser.php'" value='manageuser'><i class="fa fa-user-circle">&nbsp;&nbsp;&nbsp;Manage User</i></button><br>
+                    <button class="btn" onClick="location.href='manageuser.php'" value='manageuser'><i class="fa fa-user-circle">&nbsp;&nbsp;&nbsp;Manage Customer</i></button><br>
                     <button class="btn" onClick="location.href='managebooking.php'" value='managebooking'><i class="fa fa-calendar-check-o">&nbsp;&nbsp;&nbsp;Manage Bookings</i></button><br>
                     <button class="btn" onClick="location.href='addemployee.php'" value='addemployee'><i class="fa fa-user-plus" >&nbsp;&nbsp;&nbsp;Add Employee</i></button><br>
                     <button class="btn" onClick="location.href='manageemployee.php'" value='managemployee'><i class="fa fa-id-badge">&nbsp;&nbsp;&nbsp;Manage Employee</i></button><br>
@@ -42,10 +44,12 @@
         <div class="welcome" ><i class="fa fa-user">&nbsp;&nbsp;&nbsp;<?php echo "Welcome User Id:".$_SESSION["loggedinuser"];?></i>
 
         </div>
-        <div class="text" >Manage User</i>
+        <div class="text" >Manage Customer</i>
         </div>
 
         <div class="panel">
+        <div id="table-wrapper">
+        <div id="table-scroll">
         
             <table>
   <tr>
@@ -58,26 +62,30 @@
   <th>EMAIL</th>
   <th>MOBILE</th>
   <th>ADDRESS</th>
-  <th>STATUS</th>
   <th>ACTIONS</th>
   </tr>
-  <tr>
-  <td>C-1</td>
-  <td>MR.JACK</td>
-  <td>12-07-1997</td>
-  <td>24</td>
-  <td>MALE</td>
-  <td>1111-1111-1</td>
-  <td>JACK@GMAIL.COM</td>
-  <td>01626485694</td>
-  <td>MIRPUR 10</td>
-  <td>ACTIVE</td>
-  
-  <td><input type="button" name="action" value="view details" style="color:green" onClick="location.href='updateuser.php'" value='updateuser'></td>
-</tr>
+  <?php
+				        foreach($cms as $cm)
+				        {
+                            echo "<tr>";
+                                echo "<td>".$cm["c_id"]."</td>";
+                                echo "<td>".$cm["name"]."</td>";
+                                echo "<td>".$cm["dob"]."</td>";
+                                echo "<td>".$cm["age"]."</td>";
+                                echo "<td>".$cm["gender"]."</td>";
+                                echo "<td>".$cm["passport_id"]."</td>";
+                                echo "<td>".$cm["email"]."</td>";
+                                echo "<td>".$cm["mobile"]."</td>";
+                                echo "<td>".$cm["address"]."</td>";
+                                echo '<td><a href="updateuser.php?id='.$cm["c_id"].'" class="btn1 btn1-success">Edit</a></td>';
+                            echo "</tr>";
+				        }
+                    ?>
+                    
 
-  
         </table>
+    </div>
+    </div>
     </div>
 
     

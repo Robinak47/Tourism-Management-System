@@ -1,9 +1,73 @@
 <?php
+include '../../controllers/adminController.php';
+
     session_start();
        if(!isset( $_SESSION["loggedinuser"]))
        {
            header("Location:../login.php");
        }
+       $aid=$_SESSION["loggedinuser"];
+       $user=getUser($aid);
+
+       $current_pass="";
+       $err_current_pass="";
+
+       $new_pass="";
+       $err_new_pass="";
+
+       $has_error=false;
+
+       if(isset($_POST['submit']))
+       {	
+                   
+                   if(empty($_POST['cpass']))
+                   {
+                       $err_current_pass="*current password requiers";
+                       $has_error=true;
+               
+                       
+                   }
+                   else
+                   {
+                    $current_pass=$_POST['cpass'];
+                    if (ctype_space($current_pass)) {
+                        $err_current_pass="*Password can not be only spacces";
+                        $has_error=true;
+                    } 
+                   }
+                  
+               
+                   if(empty($_POST['npass']))
+                   {
+                       $err_new_pass="*new password Requires";
+                       $has_error=true;
+               
+                       
+                   }
+                   else
+                   {
+                        $new_pass=$_POST['npass'];
+                        if (ctype_space($new_pass)) {
+                            $err_new_pass="*Password can not be only spacces";
+                            $has_error=true;
+                        } 
+                       
+                   }
+
+                   if(!$has_error)
+                   {
+                       if($current_pass==$user['password'])
+                       {
+                        updatePassword($aid,$new_pass);
+                       }
+                       else{
+                        $err_current_pass="*current password not matched";
+                       }
+                       
+                   }
+       }
+   
+      
 
 ?>
 
@@ -25,7 +89,7 @@
                     <button class="btn" onClick="location.href='home.php'" value='home'><i class="fa fa-home">&nbsp;&nbsp;&nbsp;Home</i></button><br>
                     <button class="btn" onClick="location.href='manage_package.php'" value='manage_package'><i class="fa fa-plane">&nbsp;&nbsp;&nbsp;Manage Tour Packages</i></button><br>
                     <button class="btn" onClick="location.href='createpackage.php'" value='createpackage'><i class="fa fa-plane">&nbsp;&nbsp;&nbsp;Create Package</i></button><br>
-                    <button class="btn" onClick="location.href='manageuser.php'" value='manageuser'><i class="fa fa-user-circle">&nbsp;&nbsp;&nbsp;Manage User</i></button><br>
+                    <button class="btn" onClick="location.href='manageuser.php'" value='manageuser'><i class="fa fa-user-circle">&nbsp;&nbsp;&nbsp;Manage Customer</i></button><br>
                     <button class="btn" onClick="location.href='managebooking.php'" value='managebooking'><i class="fa fa-calendar-check-o">&nbsp;&nbsp;&nbsp;Manage Bookings</i></button><br>
                     <button class="btn" onClick="location.href='addemployee.php'" value='addemployee'><i class="fa fa-user-plus" >&nbsp;&nbsp;&nbsp;Add Employee</i></button><br>
                     <button class="btn" onClick="location.href='manageemployee.php'" value='managemployee'><i class="fa fa-id-badge" >&nbsp;&nbsp;&nbsp;Manage Employee</i></button><br>
@@ -43,7 +107,7 @@
         </div>
         <div class="text" >Change Password</i>
         </div>
-
+        <form method="post" action="">
         <div class="panel">
 
 
@@ -54,6 +118,7 @@
                     <td> <h3>Current Password:</h3></td>
                     
                     <td><h3><input type="password" name="cpass" ></h3></td>
+                    <td><span style="color:red"><?php echo $err_current_pass;?></span></td>
                  
 
                 </tr>
@@ -64,6 +129,7 @@
                     <td> <h3>New Password:</h3></td>
                     
                     <td ><h3><input type="password" name="npass"></h3></td>
+                    <td><span style="color:red"><?php echo $err_new_pass;?></span></td>
                  
 
                 </tr>
@@ -80,6 +146,7 @@
             
            
         </div>
+        </form>
 
     
       

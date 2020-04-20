@@ -1,18 +1,36 @@
 <?php
-include '../../controllers/paymentController.php';
-$payments=getAllPayment();
+include '../../controllers/book_trackingController.php';
+include '../../controllers/bookingController.php';
+include '../../controllers/billController.php';
+$bt_id = $_GET["id"];
+$bt=getBook_Tracking($bt_id);
     session_start();
        if(!isset( $_SESSION["loggedinuser"]))
        {
            header("Location:../login.php");
        }
 
+       if(isset($_POST['Accept']))
+	    {	
+            deleteBooking($bt["b_id"]);
+            deleteBill($bt["b_id"]);
+            editBook_Tracking($bt_id,"accepted");
+        }
+
+        if(isset($_POST['reject']))
+	    {	
+           
+            
+            editBook_Tracking($bt_id,"cancelled");
+            
+        }
+
 ?>
 
 <html>
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="css/managepayment.css">
+        <link rel="stylesheet" type="text/css" href="css/action.css">
     </head>
     <body>
        
@@ -42,46 +60,39 @@ $payments=getAllPayment();
         <div class="welcome" ><i class="fa fa-user">&nbsp;&nbsp;&nbsp;<?php echo "Welcome User Id:".$_SESSION["loggedinuser"];?></i>
 
         </div>
-        <div class="text" >Manage payment</i>
+        <div class="text" >Manage Bookings</i>
         
         </div>
+        <form method="post" action="">
 
         <div class="panel">
-        <div id="table-wrapper">
-        <div id="table-scroll">
-
-        
             <table>
-  <tr>
-  <th>ID</th>
-  <th>CUSTOMER ID</th>
-  <th>BOOKING ID</th>
-  <th>BILL ID</th>
-  <th>AMOUNT</th>
- 
-  
-  </tr>
-  <?php
-				        foreach($payments as $payment)
-				        {
-                            echo "<tr>";
-                                echo "<td>".$payment["py_id"]."</td>";
-                                echo "<td>".$payment["c_id"]."</td>";
-                                echo "<td>".$payment["b_id"]."</td>";
-                                echo "<td>".$payment["bl_id"]."</td>";
-                                echo "<td>".$payment["amount"]."</td>";
-                                
-                            echo "</tr>";
-				        }
-                    ?>
+            <tr>
+                    <td> <h3>BOOKING ID:</h3></td>
+                    
+                    <td><h3><input type="text" name="bid" value="<?php echo $bt["b_id"]?>" readonly ></h3></td>
+                    
                  
 
+                </tr>
+
+            
+
+                <tr>
+                    <td> <h3>CUSTOMER ID:</h3></td>
+                    
+                    <td ><h3><input type="text" name="cid" value="<?php echo $bt["c_id"]?>" readonly></h3></td>
+                   
+                 
+
+                </tr>
+            </table>
+            <h3><input type="submit" name="Accept" value="Accept"> <input type="submit" name="reject" value="Reject" style="background-color:red"></h3>
 
 
-  
-        </table>
-    </div>
-    </div>
-    </div>
+
+        </div>
+    </form> 
+        
     </body>
 </html>

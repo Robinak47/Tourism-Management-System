@@ -16,8 +16,98 @@
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/home2.css">
+
+        <script>
+
+        var myVar = setInterval( usercount, 100);
+        var myVar1 = setInterval(reviewcount, 100);
+        var myVar2 = setInterval(bookcount , 100);
+        var myVar3 = setInterval(paymentcount , 100);
+        var myVar4 = setInterval(packagecount , 100);
+		function usercount()
+		{
+			http1 = new XMLHttpRequest();
+			
+			http1.onreadystatechange=function()
+			{
+				if(http1.readyState == 4 && http1.status == 200)
+				{
+					document.getElementById("t1").value="User "+http1.responseText;
+				}
+			}
+			http1.open("GET","apply.php",true);
+			http1.send();
+          
+		}
+
+        function reviewcount()
+		{
+			http2 = new XMLHttpRequest();
+			
+			http2.onreadystatechange=function()
+			{
+				if(http2.readyState == 4 && http2.status == 200)
+				{
+					document.getElementById("t2").value="review "+http2.responseText;
+				}
+			}
+			http2.open("GET","apply1.php",true);
+			http2.send();
+		}
+
+        function bookcount()
+		{
+			http = new XMLHttpRequest();
+			
+			http.onreadystatechange=function()
+			{
+				if(http.readyState == 4 && http.status == 200)
+				{
+					document.getElementById("t3").value="bookings "+http.responseText;
+				}
+			}
+			http.open("GET","apply2.php",true);
+			http.send();
+           
+        }
+        
+        function paymentcount()
+		{
+			http3 = new XMLHttpRequest();
+			
+			http3.onreadystatechange=function()
+			{
+				if(http3.readyState == 4 && http3.status == 200)
+				{
+					document.getElementById("t4").value="payment "+http3.responseText;
+				}
+			}
+			http3.open("GET","apply3.php",true);
+			http3.send();
+           
+        }
+        
+        function packagecount()
+		{
+			http4 = new XMLHttpRequest();
+			
+			http4.onreadystatechange=function()
+			{
+				if(http4.readyState == 4 && http4.status == 200)
+				{
+					document.getElementById("t5").value="packages "+http4.responseText;
+				}
+			}
+			http4.open("GET","apply4.php",true);
+			http4.send();
+           
+		}
+
+
+        
+	</script>
     </head>
-    <body>
+    <body >
        
            
         <div class="title" >TOURISM MANAGEMENT SYSTEM
@@ -31,7 +121,7 @@
                     <button class="btn" onClick="location.href='home.php'" value='home'><i class="fa fa-home">&nbsp;&nbsp;&nbsp;Home</i></button><br>
                     <button class="btn" onClick="location.href='manage_package.php'" value='manage_package'><i class="fa fa-plane">&nbsp;&nbsp;&nbsp;Manage Tour Packages</i></button><br>
                     <button class="btn" onClick="location.href='createpackage.php'" value='createpackage'><i class="fa fa-plane">&nbsp;&nbsp;&nbsp;Create Package</i></button><br>
-                    <button class="btn" onClick="location.href='maangeuser.php'" value='manageuser'><i class="fa fa-user-circle">&nbsp;&nbsp;&nbsp;Manage User</i></button><br>
+                    <button class="btn" onClick="location.href='Manageuser.php'" value='manageuser'><i class="fa fa-user-circle">&nbsp;&nbsp;&nbsp;Manage Customer</i></button><br>
                     <button class="btn" onClick="location.href='managebooking.php'" value='managebooking'><i class="fa fa-calendar-check-o">&nbsp;&nbsp;&nbsp;Manage Bookings</i></button><br>
                     <button class="btn" onClick="location.href='addemployee.php'" value='addemployee'><i class="fa fa-user-plus" >&nbsp;&nbsp;&nbsp;Add Employee</i></button><br>
                     <button class="btn" onClick="location.href='manageemployee.php'" value='managemployee'><i class="fa fa-id-badge">&nbsp;&nbsp;&nbsp;Manage Employee</i></button><br>
@@ -59,14 +149,13 @@
             
             
 
-            <input type="button" value="users 17" style="background-color:green"> 
-            <input type="button" value="reviews 20" style="background-color:rgb(153, 102, 255);margin-left: 60px">
-            <input type="button" value="bookings 170" style="background-color:rgb(255, 153, 0);margin-left: 60px"> <br>
+            <input type="button" id="t1" style="background-color:green"> 
+            <input type="button" id="t2" style="background-color:rgb(153, 102, 255);margin-left: 60px"><br>
+            <input type="button" id="t3" style="background-color:rgb(255, 153, 0);margin-left: 240px; margin-top:20px"> <br>
 
-            <input type="button" value="issues 17" style="background-color:rgb(255, 51, 153)"> 
-            <input type="button" value="employees 20" style="background-color:rgb(0, 230, 230);margin-left: 60px">
-            <input type="button" value="booking issues 170" style="background-color:rgb(179, 0, 179);margin-left: 60px"> 
-
+            <input type="button"id="t4" style="background-color:rgb(255, 51, 153); margin-top:20px"> 
+            <input type="button" id="t5" style="background-color:rgb(0, 230, 230);margin-left: 60px; margin-top:20px">
+            
             
            
         </div>

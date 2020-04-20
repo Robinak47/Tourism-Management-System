@@ -71,7 +71,7 @@
                             
                             if( name.value == "" )
                             {
-                            error = " You Have To Write Your Name. ";
+                            error = " You Have To Write package Name. ";
                             
                             document.getElementById( "na" ).innerHTML = error;
 
@@ -81,9 +81,29 @@
 
                             if( name.value != "" )
                             {
-                            error = "";
+                                if(!name.value.replace(/\s/g, '').length)
+                                {
+                                    error = " name cannot be only space. ";
                             
-                            document.getElementById( "na" ).innerHTML = error;
+                                    document.getElementById( "na" ).innerHTML = error;
+                                    chc="ok";
+                                }
+
+                                else if(name.value.match(/^[a-zA-Z\s]+$/))
+                                {
+                                    error = "";
+                            
+                                   document.getElementById( "na" ).innerHTML = error;
+                                    
+                                }
+                                else{
+                                   
+                                  error = " name can  only be latter and space. ";
+                            
+                                    document.getElementById( "na" ).innerHTML = error;
+                                    chc="ok";
+                                }
+                            
                            
                             }
 
@@ -100,9 +120,29 @@
 
                             if( loca.value != "" )
                             {
-                            error = "";
+                                if(!loca.value.replace(/\s/g, '').length)
+                                {
+                                    error = " location cannot be only space. ";
                             
-                            document.getElementById( "na1" ).innerHTML = error;
+                                    document.getElementById( "na1" ).innerHTML = error;
+                                    chc="ok";
+                                }
+
+                                else if(loca.value.match( /^[a-zA-Z.,\s]+$/))
+                                {
+                                    error = "";
+                            
+                                   document.getElementById( "na1" ).innerHTML = error;
+                                    
+                                }
+                                else{
+                                   
+                                  error = " location can  only be latter and space,coma. ";
+                            
+                                    document.getElementById( "na1" ).innerHTML = error;
+                                    chc="ok";
+                                }
+                            
                            
                             }
 
@@ -118,10 +158,21 @@
 
                             if( price.value != "" )
                             {
-                            error = "";
                             
-                            document.getElementById( "na2" ).innerHTML = error;
+                                if(price.value.match(/^[0-9]+$/))
+                                {
+                                    error = "";
                             
+                                    document.getElementById( "na2" ).innerHTML = error;
+                                }
+
+                                else
+                                {
+                                    error = "price must be number ";
+                            
+                                    document.getElementById( "na2" ).innerHTML = error;
+                                    chc="ok";
+                                }
 
                            
                             }
@@ -159,9 +210,29 @@
 
                             if( feature.value != "" )
                             {
-                            error = "";
+                                if(!feature.value.replace(/\s/g, '').length)
+                                {
+                                    error = " features cannot be only space. ";
                             
-                            document.getElementById( "na4" ).innerHTML = error;
+                                    document.getElementById( "na4" ).innerHTML = error;
+                                    chc="ok";
+                                }
+
+                                else if(feature.value.match( /^[a-zA-Z.,\s]+$/))
+                                {
+                                    error = "";
+                            
+                                   document.getElementById( "na4" ).innerHTML = error;
+                                    
+                                }
+                                else{
+                                   
+                                  error = " features can  only be latter and space,coma. ";
+                            
+                                    document.getElementById( "na4" ).innerHTML = error;
+                                    chc="ok";
+                                }
+                            
                             
 
                            
@@ -261,7 +332,7 @@
                     <button class="btn" onClick="location.href='home.php'" value='home'><i class="fa fa-home">&nbsp;&nbsp;&nbsp;Home</i></button><br>
                     <button class="btn" onClick="location.href='manage_package.php'" value='manage_package'><i class="fa fa-plane">&nbsp;&nbsp;&nbsp;Manage Tour Packages</i></button><br>
                     <button class="btn" onClick="location.href='createpackage.php'" value='createpackage'><i class="fa fa-plane">&nbsp;&nbsp;&nbsp;Create Package</i></button><br>
-                    <button class="btn" onClick="location.href='manageuser.php'" value='manageuser'><i class="fa fa-user-circle">&nbsp;&nbsp;&nbsp;Manage User</i></button><br>
+                    <button class="btn" onClick="location.href='manageuser.php'" value='manageuser'><i class="fa fa-user-circle">&nbsp;&nbsp;&nbsp;Manage Customer</i></button><br>
                     <button class="btn" onClick="location.href='managebooking.php'" value='managebooking'><i class="fa fa-calendar-check-o">&nbsp;&nbsp;&nbsp;Manage Bookings</i></button><br>
                     <button class="btn" onClick="location.href='addemployee.php'" value='addemployee'><i class="fa fa-user-plus" >&nbsp;&nbsp;&nbsp;Add Employee</i></button><br>
                     <button class="btn" onClick="location.href='manageemployee.php'" value='managemployee'><i class="fa fa-id-badge">&nbsp;&nbsp;&nbsp;Manage Employee</i></button><br>
@@ -336,7 +407,7 @@
                 <tr>
                     <td> <h3>Travel Date:</h3></td>
                     
-                    <td><h3><input type="date" name="date" id="t6" style="margin-right:200px"></h3></td>
+                    <td><h3><input type="date" name="date" id="t6" ></h3></td>
                     <td> <span id="na5" style="color:red"></td>
                   
                  
@@ -349,9 +420,9 @@
                     
                     <td>
                         
-                                <input type="file" name="image" id="im" enctype="multipart/form-data">
+                                <input type="file" name="image" id="im" enctype="multipart/form-data" >
                                 <td> <span id="na6" style="color:red"></td>
-                        </div>
+                        
                 
                 
                     </td>
