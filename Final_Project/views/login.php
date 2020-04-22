@@ -54,6 +54,14 @@
                         $_SESSION["loggedinuser"]=$uid;
                         header("Location:Manager/home.php");
                     }
+                    if($type == "user")
+                    {
+                        session_start();
+                        $_SESSION["loggedinuser"]=$uid;
+                        header("Location:User/profile.php");
+                    }
+
+                  
 
                 }
 
