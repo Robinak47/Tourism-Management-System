@@ -24,6 +24,14 @@
 		
 	}
 
+	function forgetPassword($id,$pass)
+    {
+        $query="UPDATE login SET password='$pass' WHERE id='$id'";
+		
+		execute($query);
+		header("Location:../views/login.php");
+	}
+
 	
 
 	

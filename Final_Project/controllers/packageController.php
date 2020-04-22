@@ -30,6 +30,7 @@
 	{
 		$query="INSERT INTO packages VALUES('$id','$name','$type','$loc','$image','$price','$feature','$tr','$aid','active')";
 		execute($query);
+		header("Location:../../views/Admin/manage_package.php");
 		
 
 	}

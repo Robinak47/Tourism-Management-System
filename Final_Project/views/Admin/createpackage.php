@@ -177,7 +177,7 @@
                            
                             }
 
-                            if( type1.checked == false && type2.checked == false & type3.checked == false )
+                            if( type1.checked == false && type2.checked == false && type3.checked == false )
                             {
                             error = " You Have To select a type. ";
                             

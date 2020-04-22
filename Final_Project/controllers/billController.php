@@ -7,6 +7,15 @@
 		
 		execute($query);
 		
-	}
+    }
+
+    function getAllBill()
+	{
+		$query ="SELECT * FROM bill WHERE status='active'";
+		$bill = get($query);
+		return $bill;	
+    }
+    
+
 
 ?>
