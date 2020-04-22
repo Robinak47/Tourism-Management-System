@@ -42,7 +42,19 @@
 		execute($query);
 		header("Location:../../views/Admin/manage_package.php");
 	}
+	function searchPackage($td,$type)
+	{
+		$query="SELECT * FROM packages WHERE travel_date='$td' AND type='$type' AND status='active'";
+		$package=get($query);
+		return $package;
+	}
 	
+	function offerPackage($offer)
+	{
+		$query="SELECT * FROM packages WHERE offer='$offer' AND status='active'";
+		$package=get($query);
+		return $package;
+    }
 
 	
 ?>

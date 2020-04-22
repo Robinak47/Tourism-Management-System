@@ -40,6 +40,18 @@
 
 	}
 
-
+    function searchTransport($date, $locf, $loct, $type)
+	{
+		$query="SELECT * FROM transport WHERE traveldate='$date' AND location_f='$locf' AND location_t='$loct' AND type='$type' and status='active'";
+		$transport=get($query);
+		return $transport;
+    }
+    
+    function updateCount($tr_id,$count)
+	{
+		$query="UPDATE transport SET count='$count' WHERE tr_id='$tr_id' and status='active'";
+		execute($query);
+		
+	}
 
 ?>

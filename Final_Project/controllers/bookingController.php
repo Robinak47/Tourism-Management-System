@@ -16,4 +16,25 @@
 		
 	}
 
+	function insertBooking($b_id, $pht_id, $status, $c_id)
+	{
+		$query="INSERT INTO booking VALUES('$b_id','$pht_id','$status','$c_id')";
+		execute($query);
+		
+	}
+	
+	function getAllBookingU($cid)
+	{
+		$query ="SELECT * FROM booking where c_id='$cid' AND status='active'";
+		$booking = get($query);
+		return $booking;	
+    }
+	
+	function getBooking($b_id)
+	{
+		$query ="SELECT * FROM booking where b_id='$b_id' AND status='active'";
+		$booking = get($query);
+		return $booking[0];	
+	}
+
 ?>

@@ -38,6 +38,20 @@
         header("Location:../../views/Manager/managehotel.php");
 		
 
+    }
+    
+    function searchHotel($location)
+	{
+		$query="SELECT * FROM hotel WHERE location='$location' AND status='active'";
+		$hotel=get($query);
+		return $hotel;
+    }
+    
+    function updateCountHotel($h_id, $count)
+	{
+		$query="UPDATE hotel SET count='$count' WHERE h_id='$h_id' and status='active'";
+		execute($query);
+		
 	}
 
 

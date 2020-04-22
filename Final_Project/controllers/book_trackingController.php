@@ -25,3 +25,17 @@
 		execute($query);
 		header("Location:../../views/Admin/managebooking.php");
 	}
+	function insertBookTracking($bt_id, $status, $active_status, $b_id, $c_id)
+	{
+		$query="INSERT INTO book_tracking VALUES('$bt_id', '$status', '$active_status', '$b_id', '$c_id')";
+		execute($query);
+	}
+
+	function getBook_TrackingU($c_id)
+	{
+		$query ="SELECT * FROM book_tracking WHERE c_id='$c_id' AND status='active'";
+		$bts = get($query);
+		return $bts;	
+	}
+
+	?>
