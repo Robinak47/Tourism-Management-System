@@ -10,6 +10,12 @@
     }
     $cid = $_SESSION["loggedinuser"];
     $user=getUser($cid);
+
+    if(isset($_POST['back']))
+	{
+        
+		header("Location:profile.php");
+    }
     
 ?>
 
@@ -206,7 +212,13 @@
                         </tr>
                         <tr>
                             <td>Gender: </td>
-                            <td><input type="text" name="gender" value="<?php echo $user["gender"];?>"></td>
+                            <td>
+                                <select name="gender">
+                                    <option value="<?php echo $user["gender"];?>"><?php echo $user["gender"];?></option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td>Email: </td>
@@ -218,6 +230,8 @@
                     </tr>
                         <tr>
                             <td><input type="submit" name="submit" value="Save Changes"></td>
+                            <td></td>
+                            <td><input type="submit" name="back" value="Back to Profile"></td>
                         </tr>
                     </tbody>
                 </table>
