@@ -3,7 +3,7 @@
     
     function getAllReview()
 	{
-		$query ="SELECT * FROM review WHERE status='active'";
+		$query ="SELECT review.*,customer.name FROM review,customer WHERE review.status='active' and review.c_id=customer.c_id";
 		$rev = get($query);
 		return $rev;	
 	}
