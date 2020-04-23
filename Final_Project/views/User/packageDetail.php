@@ -3,12 +3,14 @@
       require_once ('../../controllers/bookingController.php');
       require_once ('../../controllers/billController.php');
       require_once ('../../controllers/customerController.php');
+      require_once ('../../controllers/reviewController.php');
+
 
 	  
-	  $pid = $_GET["id"];
-	  $package=getPackage($pid);
-    
-       
+	$pid = $_GET["id"];
+	$package=getPackage($pid);
+
+    $reviews = getAllReview();       
 	 
 
     if(isset($_POST['submit']))
@@ -106,6 +108,26 @@
                 </tbody>
             </table>
         </form>
+        <div style="position:absolute; top: 580px; left: 830px;">
+            <h2>Review From Our Beloved Customers</h2><hr>
+            <table border="1">
+                <tr>
+                    <td>ID</td>
+                    <td>Customer Name</td>
+                    <td>Comment</td>
+                </tr>
+                <?php
+                    foreach($reviews as $review)
+                        {
+                            echo "<tr>";
+                            echo "<td>".$review['c_id']."</td>";
+                            echo "<td>".$review['name']."</td>";
+                            echo "<td>".$review['comment']."</td>";
+                            echo "</tr>";
+                        }
+                ?>
+            </table>    
+        </div>
         <div class="footer">
             <p style="position: absolute;">Hot Line : +88018356465 <br>
                Facebook : www.facebook.com/tms_bd <br>
