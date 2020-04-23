@@ -83,7 +83,7 @@
             .footer {
                 position: absolute;;
                 left: 0;
-                top: 1250px;
+                top: 1150px;
                 width: 100%;
                 background-color: rgb(35, 35, 119);
                 color: rgb(216, 205, 205);
@@ -162,7 +162,7 @@
             
         </div>
 
-        <div style="position:absolute; top: 100px; left: 500px;"> 
+        <div style="position:absolute; top: 100px; left: 500px; overflow: scroll; height: 25.5%;"> 
             <h2>Booking Table</h2>
             <table border="1">
                 <tbody>
@@ -188,7 +188,7 @@
             </table>
         </div>
         
-        <div style="position:absolute; top: 400px; left: 500px;"> 
+        <div style="position:absolute; top: 400px; left: 500px; overflow: scroll; height: 25.5%;"> 
             <h2>Billing Table(Unpaid)</h2>
                 <table border="1">
                     <tbody>
@@ -240,7 +240,7 @@
                 </tbody>
             </table>
         </div>-->
-        <div style="position:absolute; top: 100px; left: 1000px;"> 
+        <div style="position:absolute; top: 100px; left: 1100px; overflow: scroll; height: 25.5%;"> 
             <h2>Track Your Booking Status</h2>
             <table border="1">
                 <tbody>
@@ -263,7 +263,7 @@
                 </tbody>
             </table>
         </div>
-        <div style="position:absolute; top: 400px; left: 1000px;"> 
+        <div style="position:absolute; top: 400px; left: 1050px; overflow: scroll; height: 25.5%;"> 
             <h2>Payment Information</h2>
             <table border="1">
                 <tbody>
@@ -291,11 +291,12 @@
             </table>
         </div>
         <form action="" method="post">
-        <div style="position:absolute; top: 600px; left: 600px;"> 
+        <div style="position:absolute; top: 750px; left: 550px;"> 
             <h2>Print Your Ticket to Consume The Service</h2>
             <table border="1">
                 <tbody>
                     <tr>
+                        <td>Find Your Booking</td>
                         <td><select name="find_booking">
                                 <?php
                                     foreach($bookings as $booking)
