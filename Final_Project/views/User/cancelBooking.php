@@ -24,6 +24,7 @@
         $bt_id="Bt-".$x;
         $status='active';
         $active_status='requested';
+        $flag=0;
 
         for($i = 0; $i < count($payments); ++$i) {
            
