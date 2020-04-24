@@ -100,7 +100,7 @@
                 echo "Put date to book hotel";
             }
 
-
+            header("Location:../User/profile.php");
             
             
        

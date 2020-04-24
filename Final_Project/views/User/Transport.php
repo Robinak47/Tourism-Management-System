@@ -1,6 +1,8 @@
 <?php 
 	
-	require '../../controllers/transportController.php';
+    require '../../controllers/transportController.php';
+    
+    $locTrans=getAllTransport()
     
 ?>
 <html>
@@ -158,14 +160,13 @@
                 <tr>
                 <td>Choose Location From: </td>
                     <td><select name="locf">
-                            <option value=""></option>
-                            <option value="Dhaka">Dhaka</option>
-                            <option value="Chittagong">Chittagong</option>
-                            <option value="Sylhet">Sylhet</option>
-                            <option value="Rajshahi">Rajshahi</option>
-                            <option value="Barishal">Barishal</option>
-                            <option value="Cox's Bazar">Cox's Bazar</option>
-
+                    <option></option>
+                                    <?php
+                                        foreach($locTrans as $locTran)
+                                          {
+                                              echo '<option value="'.$locTran['location_f'].'">'.$locTran['location_f'].'<option>';
+                                          }
+                                    ?>
                         </select>
                     </td>
                 </tr>
@@ -176,13 +177,13 @@
                 <tr>
                 <td>Choose Location to: </td>
                     <td><select name="loct">
-                            <option value=""></option>
-                            <option value="Dhaka">Dhaka</option>
-                            <option value="Chittagong">Chittagong</option>
-                            <option value="Sylhet">Sylhet</option>
-                            <option value="Rajshahi">Rajshahi</option>
-                            <option value="Barishal">Barishal</option>
-                            <option value="Cox's Bazar">Cox's Bazar</option>
+                    <option></option>
+                                    <?php
+                                        foreach($locTrans as $locTran)
+                                          {
+                                              echo '<option value="'.$locTran['location_t'].'">'.$locTran['location_t'].'<option>';
+                                          }
+                                    ?>
                         </select>
                     </td>
                 </tr>

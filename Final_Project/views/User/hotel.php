@@ -44,6 +44,7 @@
        
         $hotels = array();
        
+        $lHotels=getAllHotel();
 
        if(isset($_POST['submit']))
             {
@@ -110,16 +111,18 @@
               <tbody>
                 <tr>
                     <td>Choose Location: </td>
-                    <td><select name="location">
-                            <option value=""></option>
-                            <option value="Dhaka">Dhaka</option>
-                            <option value="Chittagong">Chittagong</option>
-                            <option value="Sylhet">Sylhet</option>
-                            <option value="Rajshahi">Rajshahi</option>
-                            <option value="Barishal">Barishal</option>
-                            <option value="Cox's Bazar">Cox's Bazar</option>
+                    <td>
+                        <select name="location">
+                          <option></option>
+                          <?php
+                                    
+                                          foreach($lHotels as $lHotel)
+                                          {
+                                              echo '<option value="'.$lHotel['location'].'">'.$lHotel['location'].'<option>';
+                                          }
 
-                        </select>
+                          ?>
+                        </select>  
                     </td>
                 </tr>
                 <tr>

@@ -34,6 +34,8 @@
         $amount=$package["price"];
 
         insertBill($bl_id, 'active', 'unpaid', $amount, $c_id, $b_id);
+
+        header("Location:../User/home.php");
     }
 ?>
 <html>
