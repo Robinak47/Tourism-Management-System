@@ -134,6 +134,7 @@
         <span style="color:red"><?php echo $err_pass;?></span>
       </div>
      
+    <a href="user/reg.php">*Signup a new account</a>   
   <input type="submit" class="btn" value="Sign in" name="submit">
   <span style="color:red; font-size:20px"><?php echo $err_invalid;?></span>
   <input type="submit" class="btn" value="Forget password" name="submit1">

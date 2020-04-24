@@ -61,6 +61,7 @@
                 if(empty($_POST['fname']))
                 {
                     $err_fname="*Valid Name Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -78,6 +79,7 @@
                 if(empty($_POST['email']))
                 {
                     $err_email="*email Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -94,6 +96,7 @@
                 if(empty($_POST['phoneNumber']))
                 {
                     $err_phoneNumber="*phoneNumber Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -104,6 +107,7 @@
                 if(empty($_POST['address1']))
                 {
                     $err_address1="*address Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -114,6 +118,7 @@
                 if(empty($_POST['gender']))
                 {
                     $err_gender="*gender Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -125,6 +130,7 @@
                 if(empty($_POST['dob']))
                 {
                     $err_dob="*date Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -136,6 +142,7 @@
                 if(empty($_POST['passid']))
                 {
                     $err_passid="*passport id Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -158,6 +165,7 @@
                 if(empty($_POST['qsn']))
                 {
                     $err_qsn="*Question Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -167,6 +175,7 @@
                 if(empty($_POST['ans']))
                 {
                     $err_ans="*answer Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -203,6 +212,9 @@
                     
                     accessUser($cid, $pass, 'user', $ans, 'active');
                 }
+                else
+                    echo '<script>alert("Fill Up Properly")</script>';
+
 
             }
         ?>
