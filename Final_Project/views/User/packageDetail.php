@@ -26,16 +26,45 @@
         $b_id="B-".$x;
         $pht_id=$package["p_id"];
         
+        $checkBooks=getAllBookingU($c_id);
+        $check=array();
+        $flag=0;
+
+        foreach($checkBooks as $checkBook)
+        {
+           $check = $checkBook["pht_id"];
+
+        }
+
+
+        for($i = 0; $i < count($checkBooks); ++$i) {
+           
+
+            if($pht_id==$checkBooks[$i]['pht_id'])
+            {
+                echo '<script>alert("Package already has taken")</script>';
+
+               $flag=1;
+               
+            }
+            
+            
+        }
+
+        if($flag==0)
+            {
+                insertBooking($b_id, $pht_id, 'active', $c_id);   
+
+                $y=rand(1,10000000);
+                $bl_id="Bl-".$y;
+                $amount=$package["price"];
+
+                insertBill($bl_id, 'active', 'unpaid', $amount, $c_id, $b_id);
+
+                header("Location:../User/home.php");
+            }
+            
         
-        insertBooking($b_id, $pht_id, 'active', $c_id);   
-
-        $y=rand(1,10000000);
-        $bl_id="Bl-".$y;
-        $amount=$package["price"];
-
-        insertBill($bl_id, 'active', 'unpaid', $amount, $c_id, $b_id);
-
-        header("Location:../User/home.php");
     }
 ?>
 <html>
