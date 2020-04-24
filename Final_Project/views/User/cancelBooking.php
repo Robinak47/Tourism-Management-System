@@ -3,6 +3,7 @@
       require_once ('../../controllers/customerController.php');
       require_once ('../../controllers/bookingController.php');    
       require_once ('../../controllers/paymentController.php');
+      require_once ('../../controllers/billController.php');
        
 	 
 
@@ -42,6 +43,7 @@
 
             insertBookTracking($bt_id, $status, $active_status, $b_id, $c_id);
             deleteBooking($b_id);
+            deleteBill($b_id);
 
             header("Location:profile.php");
         }
