@@ -47,6 +47,7 @@
                 if(empty($_POST['id']))
                 {
                     $err_id="*Valid id Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -57,6 +58,7 @@
                 if(empty($_POST['comment']))
                 {
                     $err_comment="*comment Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -72,6 +74,8 @@
 
                     insertIssue($isid, $comment, $cid);
                 }
+                else
+                    echo '<script>alert("Fill up properly")</script>';
             }
             ?>
         <ul class="active">
