@@ -1,9 +1,9 @@
 <?php
     require_once '../../models/database.php';
     
-    function deleteBill($id)
+    function activeBill($id)
     {
-        $query="UPDATE bill SET status='inactive' WHERE b_id='$id'";
+        $query="UPDATE bill SET status='active' WHERE b_id='$id'";
 		
 		execute($query);
 		

@@ -12,15 +12,15 @@ $bt=getBook_Tracking($bt_id);
 
        if(isset($_POST['Accept']))
 	    {	
-            deleteBooking($bt["b_id"]);
-            deleteBill($bt["b_id"]);
+           
             editBook_Tracking($bt_id,"accepted");
         }
 
         if(isset($_POST['reject']))
 	    {	
            
-            
+            activeBooking($bt["b_id"]);
+            activeBill($bt["b_id"]); 
             editBook_Tracking($bt_id,"cancelled");
             
         }

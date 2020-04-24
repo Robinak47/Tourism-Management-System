@@ -18,9 +18,9 @@
 		return $package[0];
     }
     
-    function editPackage($id, $price, $date, $features)
+    function editPackage($id, $price, $date, $features,$offer)
     {
-        $query="UPDATE packages SET price='$price',features='$features', travel_date='$date' WHERE p_id='$id'";
+        $query="UPDATE packages SET price='$price',features='$features', travel_date='$date',offer='$offer' WHERE p_id='$id'";
 		
 		execute($query);
 		header("Location:../../views/Admin/manage_package.php");
@@ -28,7 +28,7 @@
 	
 	function insertPackage($id,$name,$type,$loc,$image,$price,$feature,$tr,$aid)
 	{
-		$query="INSERT INTO packages VALUES('$id','$name','$type','$loc','$image','$price','$feature','$tr','$aid','active')";
+		$query="INSERT INTO packages VALUES('$id','$name','$type','$loc','$image','$price','$price','$feature','$tr','off','$aid','active')";
 		execute($query);
 		header("Location:../../views/Admin/manage_package.php");
 		
