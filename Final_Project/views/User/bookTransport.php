@@ -57,6 +57,7 @@
             (int)$count+=$seat;
 
             updateCount($pht_id,$count);
+            header("Location:../User/home.php");
         }
        
     }
