@@ -48,6 +48,7 @@
                 if(empty($_POST['name']))
                 {
                     $err_name="*Valid Name Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -65,6 +66,7 @@
                 if(empty($_POST['email']))
                 {
                     $err_email="*email Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -72,6 +74,7 @@
                     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
                     {
                         $err_email = "Valid email required";
+                        $has_error=true;
                     }
                   
                         
@@ -81,6 +84,7 @@
                 if(empty($_POST['mobile']))
                 {
                     $err_mobile="*Phone Number Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -91,6 +95,7 @@
                 if(empty($_POST['address']))
                 {
                     $err_address="*address Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -101,6 +106,7 @@
                 if(empty($_POST['gender']))
                 {
                     $err_gender="*gender Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -112,6 +118,7 @@
                 if(empty($_POST['dob']))
                 {
                     $err_dob="*date Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -122,6 +129,7 @@
                 if(empty($_POST['passid']))
                 {
                     $err_passid="*passport id Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -154,6 +162,8 @@
                     editUser($cid, $name, $dob, '20', $mobile, $address, $passid, $gender, $email, $target_file);
                     
                 }
+                else
+                    echo '<script>alert("Fill up properly")</script>';
 
             }
         ?>
