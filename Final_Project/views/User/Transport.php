@@ -57,6 +57,7 @@
          if(empty($_POST['date']))
            {
                $err_date="*date Required";
+               $has_error=true;
            }
            else
            {			
@@ -67,6 +68,7 @@
            if(empty($_POST['locf']))
            {
                $err_locf="*Location Required";
+               $has_error=true;
            }
            else
            {			
@@ -76,6 +78,7 @@
            if(empty($_POST['loct']))
            {
                $err_loct="*Location Required";
+               $has_error=true;
            }
            else
            {			
@@ -85,6 +88,7 @@
            if(empty($_POST['type']))
             {
                     $err_type="*Type Required";
+                    $has_error=true;
             }
                 else
             {			
@@ -100,6 +104,8 @@
 
                $transports = searchTransport($date, $locf, $loct, $type);
             }
+            else
+                echo '<script>alert("Something went wrong!")</script>';
          }
  
  ?>

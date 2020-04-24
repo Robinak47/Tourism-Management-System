@@ -59,6 +59,7 @@
               if(empty($_POST['date']))
                 {
                     $err_date="*date Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -69,6 +70,7 @@
                 if(empty($_POST['type']))
                 {
                     $err_type="*Type Required";
+                    $has_error=true;
                 }
                 else
                 {			
@@ -82,6 +84,8 @@
 
                     $spackages = searchPackage($date, $type);
                 }
+                else
+                    echo '<script>alert("Something went wrong")</script>';
               }
       
       ?>

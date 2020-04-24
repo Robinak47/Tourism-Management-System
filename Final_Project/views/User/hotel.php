@@ -57,12 +57,14 @@
                     $location=htmlspecialchars($_POST['location']);
                 }
 
-                if(!$has_error)
-		        {
+                if($location!="")
+		            {
                     $location=$_POST['location'];
 
                     $hotels = searchHotel($location);
                 }
+                else
+                  echo '<script>alert("Something went wrong!")</script>';
                 
               }
       
