@@ -2,7 +2,7 @@
       require_once ('../../controllers/book_trackingController.php');
       require_once ('../../controllers/customerController.php');
       require_once ('../../controllers/bookingController.php');    
-    
+      require_once ('../../controllers/paymentController.php');
        
 	 
 
@@ -16,16 +16,35 @@
         
         $c_id = $_SESSION["loggedinuser"];
 
+        $payments =  getAllPaymentU($c_id);
+
         $b_id = $_GET["id"];   
         $x=rand(1,10000000);
         $bt_id="Bt-".$x;
         $status='active';
         $active_status='requested';
 
-        insertBookTracking($bt_id, $status, $active_status, $b_id, $c_id);
-        deleteBooking($b_id);
+        for($i = 0; $i < count($payments); ++$i) {
+           
 
-        header("Location:profile.php");
+            if($b_id==$payments[$i]['b_id'])
+            {
+                echo '<script>alert("Payment already has done")</script>';
+
+               $flag=1;
+               
+            }
+            
+            
+        }
+        if($flag==0)
+        {
+
+            insertBookTracking($bt_id, $status, $active_status, $b_id, $c_id);
+            deleteBooking($b_id);
+
+            header("Location:profile.php");
+        }
        
     }
     if(isset($_POST['back']))

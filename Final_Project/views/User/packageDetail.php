@@ -30,11 +30,7 @@
         $check=array();
         $flag=0;
 
-        foreach($checkBooks as $checkBook)
-        {
-           $check = $checkBook["pht_id"];
-
-        }
+       
 
 
         for($i = 0; $i < count($checkBooks); ++$i) {
