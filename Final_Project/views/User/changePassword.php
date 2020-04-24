@@ -6,7 +6,8 @@
 		header("Location:../login.php");
     }
     $cid = $_SESSION["loggedinuser"];
-    $user=getUser($cid);
+    $user=getUserU($cid);
+
 
 ?>
 
@@ -35,8 +36,7 @@
     <?php
             
             
-            $pass="";
-            $err_pass="";
+            
             $opass="";
             $err_opass="";
             $cpass="";
@@ -49,23 +49,21 @@
                 if((empty($_POST['opass'])))
                 {
                     $err_opass="*password Required";
+                    $has_error=true;
                 }
                 else
                 {			
                     $opass=htmlspecialchars($_POST['opass']);
                 }
 
-                if((empty($_POST['pass'])) && (empty($_POST['cpass'])))
+                if( (empty($_POST['pass'])))
                 {
-                    $err_pass="*password Required";
+                    $err_cpass="* new password Required";
+                    $has_error=true;
                 }
                 else
                 {			
-                    if($pass==$cpass)
-                         $pass=htmlspecialchars($_POST['pass']);
-                    else
-                        $err_pass="password mismatch";     
-                    
+                    $cpass=htmlspecialchars($_POST['pass']);
                 }
                 
                 
@@ -73,10 +71,19 @@
                 if(!$has_error)
 		        {
                     
-                    $pass= $_POST['pass'];
+                    if($opass==$user["password"])
+                    {
+                        updatePass($cid, $cpass);
+                    }
+
+                    else{
+                        $err_cpass="*wrong password!Current password not matched ";
+
+                    }
+                    
                     
 
-                    updatePass($cid, $pass);
+                    
                 }
 
             }
@@ -90,6 +97,11 @@
                     <tr>
                         <td>Current Password:</td>
                         <td><input type="password" style="width: 250;"  name="opass"></td>
+                        
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><span style="color:red"><?php echo $err_opass;?></span></td>
                     </tr>
                     <tr>
                         <td>New Password:</td>
@@ -97,16 +109,9 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><span style="color:red"><?php echo $err_pass;?></span></td>
+                        <td><span style="color:red"><?php echo $err_cpass;?></span></td>
                     </tr>
-                    <tr>
-                        <td>Confirm Password:</td>
-                        <td><input type="password" style="width: 250;"  name="cpass"></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><span style="color:red"><?php echo $err_pass;?></span></td>
-                    </tr>
+                   
                     
                    
                     <tr>

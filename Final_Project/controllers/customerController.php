@@ -64,6 +64,15 @@
 	{
 		$query="UPDATE login SET password='$password' WHERE id='$id'";
 		execute($query);
+		header("Location:../logout.php");
+		
 
+	}
+
+	function getUserU($id)
+	{
+		$query="SELECT * FROM login WHERE id='$id'";
+		$user=get($query);
+		return $user[0];
 	}
 ?>

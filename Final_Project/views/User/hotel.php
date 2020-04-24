@@ -67,15 +67,15 @@
       
       ?>
       <ul class="active">
-      <li><a href="http://localhost:8082/web_tech/home.php">Home</a></li>
-            <li><a href="http://localhost:8082/Final_Project/views/User/packages.php">Packages</a></li>
-            <li><a href="http://localhost:8082/Final_Project/views/User/hotel.php">Hotels</a></li>
-            <li><a href="http://localhost:8082/Final_Project/views/User/gallery.php">Gallery</a></li>
-            <li><a href="http://localhost:8082/Final_Project/views/User/Transport.php">Transprot</a></li>
-            <li><a href="http://localhost:8082/Final_Project/views/User/contact.php">Contact</a></li>
-            <li><a href="http://localhost:8082/Final_Project/views/User/about.php">About</a></li>
+      <li><a href="home.php">Home</a></li>
+            <li><a href="packages.php">Packages</a></li>
+            <li><a href="hotel.php">Hotels</a></li>
+            <li><a href="gallery.php">Gallery</a></li>
+            <li><a href="Transport.php">Transprot</a></li>
+            <li><a href="contact.php">Contact</a></li>
+            <li><a href="about.php">About</a></li>
             <li><a href="#contact"><input type="text"><input type="button" value="search"></a></li>
-            <li><a href="http://localhost:8082/Final_Project/views/login.php">Login/Signup</a></li>
+            <li><a href="../login.php">Login/Signup</a></li>
       </ul>
       
 
