@@ -76,7 +76,7 @@
             <li><a href="contact.php">Contact</a></li>
             <li><a href="about.php">About</a></li>
             <li><a href="#contact"><input type="text"><input type="button" value="search"></a></li>
-            <li><a href="../login.php">Login/Signup</a></li>
+            <li><a href="profile.php">Login/Signup</a></li>
       </ul>
       
 
