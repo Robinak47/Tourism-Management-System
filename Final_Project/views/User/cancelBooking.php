@@ -1,6 +1,8 @@
 <?php 
       require_once ('../../controllers/book_trackingController.php');
-      require_once ('../../controllers/customerController.php');    
+      require_once ('../../controllers/customerController.php');
+      require_once ('../../controllers/bookingController.php');    
+    
        
 	 
 
@@ -21,6 +23,7 @@
         $active_status='requested';
 
         insertBookTracking($bt_id, $status, $active_status, $b_id, $c_id);
+        deleteBooking($b_id);
 
         header("Location:profile.php");
        
