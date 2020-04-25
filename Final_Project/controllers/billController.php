@@ -7,6 +7,14 @@
 		
 		execute($query);
 		
+	}
+	
+	function deleteBill($id)
+    {
+        $query="UPDATE bill SET status='inactive' WHERE b_id='$id'";
+		
+		execute($query);
+		
     }
 
     function getAllBill()

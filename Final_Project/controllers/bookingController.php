@@ -23,6 +23,14 @@
 		
 	}
 
+	function deleteBooking($id)
+    {
+        $query="UPDATE booking SET status='inactive' WHERE b_id='$id'";
+		
+		execute($query);
+		
+	}
+
 	function insertBooking($b_id, $pht_id, $status, $c_id)
 	{
 		$query="INSERT INTO booking VALUES('$b_id','$pht_id','$status','$c_id')";
