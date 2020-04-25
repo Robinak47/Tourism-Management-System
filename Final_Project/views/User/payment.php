@@ -32,7 +32,7 @@
             for($i = 0; $i < count($check_booking); ++$i) {
            
 
-                if($b_id==$check_booking[$i]['b_id'])
+                if($b_id==$check_booking[$i]['b_id'] && $check_booking[$i]['active_status']=="requested")
                     {
                         echo '<script>alert("Already requested for cancel")</script>';
             
