@@ -57,7 +57,15 @@
 		$query ="SELECT * FROM bill where pay_status='unpaid' AND c_id='$cid' AND status='active'";
 		$bill = get($query);
 		return $bill;	
+	}
+	
+	function getBillM($bid)
+	{
+		$query ="SELECT * FROM bill where b_id='$bid' ";
+		$bill = get($query);
+		return $bill[0];	
     }
+
 
 
 ?>

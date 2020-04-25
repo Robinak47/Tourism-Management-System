@@ -45,4 +45,12 @@
 		return $booking[0];	
 	}
 
+	function getBookingS($b_id)
+	{
+		$query ="SELECT * FROM booking where b_id='$b_id'";
+		$booking = get($query);
+		return $booking[0];	
+	}
+
+	
 ?>

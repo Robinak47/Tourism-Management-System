@@ -2,8 +2,11 @@
 include '../../controllers/book_trackingController.php';
 include '../../controllers/bookingController.php';
 include '../../controllers/billController.php';
+include '../../controllers/transportController.php';
+include '../../controllers/hotelController.php';
 $bt_id = $_GET["id"];
 $bt=getBook_Tracking($bt_id);
+
     session_start();
        if(!isset( $_SESSION["loggedinuser"]))
        {
@@ -12,7 +15,31 @@ $bt=getBook_Tracking($bt_id);
 
        if(isset($_POST['Accept']))
 	    {	
+           $booking=getBookingS($bt["b_id"]);
            
+           $pht= $booking['pht_id'];
+           if($pht[0]=='T')
+           {
+               $bill= getBillM($booking['b_id']);
+               $amount=$bill['amount'];
+              
+
+               $trans=getTransport($pht);
+               $price=$trans['price'];
+               $count= intval($amount)/intval($price);
+               $co= $trans['count'];
+               $new=intval($co)-$count;
+               updateCount($pht,$new);
+           }
+
+           else if($pht[0]=='H')
+           {
+                $hotel=getHotel($pht);
+                $count= $hotel['count'];
+                $new=$count-1;
+                updateCountHotel($hotel['h_id'], $new);
+           }
+
             editBook_Tracking($bt_id,"accepted");
         }
 
@@ -71,6 +98,7 @@ $bt=getBook_Tracking($bt_id);
                     <td> <h3>BOOKING ID:</h3></td>
                     
                     <td><h3><input type="text" name="bid" value="<?php echo $bt["b_id"]?>" readonly ></h3></td>
+                  
                     
                  
 
