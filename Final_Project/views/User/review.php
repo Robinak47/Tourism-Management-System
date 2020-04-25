@@ -49,7 +49,7 @@
     }
     if(isset($_POST['back']))
     {
-        header("Location:hotel.php");
+        header("Location:profile.php");
        
     }
 ?>
