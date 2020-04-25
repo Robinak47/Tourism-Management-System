@@ -12,6 +12,8 @@
     $date="";
     $err_date="";
 
+    $offer="off";
+
     $has_error=false;
 
 
@@ -50,6 +52,10 @@
                         if(is_numeric($_POST['price']))
                         {
                             $price=$_POST['price'];
+                            if($price < $package['old_price'])
+                            {
+                                $offer="on";
+                            }
                         }
                         else{
                             $err_price="*price must be a number";
@@ -83,7 +89,7 @@
 
                     if(!$has_error)
                     {
-                        editPackage($pid,$price,$date,$feature);
+                        editPackage($pid,$price,$date,$feature,$offer);
                     }
 		
     }

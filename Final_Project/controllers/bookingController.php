@@ -8,9 +8,9 @@
 		return $books;	
 	}
 	
-	function deleteBooking($id)
+	function activeBooking($id)
     {
-        $query="UPDATE booking SET status='inactive' WHERE b_id='$id'";
+        $query="UPDATE booking SET status='active' WHERE b_id='$id'";
 		
 		execute($query);
 		
