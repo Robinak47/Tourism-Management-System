@@ -48,8 +48,10 @@
         $seat=$_POST['seat'];
 
         (int)$amount=(int)$transport["price"]*(int)$seat;
+
+        $capacity = $total_seat - $count;
         
-        if(($amount!=0) && ($count <= $total_seat))
+        if(($amount!=0) && ($seat <= $capacity))
         {
             insertBooking($b_id, $pht_id, 'active', $c_id);  
             insertBill($bl_id, 'active', 'unpaid', $amount, $c_id, $b_id);
@@ -58,6 +60,10 @@
 
             updateCount($pht_id,$count);
             header("Location:../User/home.php");
+        }
+        else
+        {
+            echo '<script>alert("Seat Full")</script>';
         }
        
     }

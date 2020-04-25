@@ -6,6 +6,8 @@
   
       $days="";
       $err_days="";
+      $rooms="";
+      $err_rooms="";
       $has_error=false;  
 
     if(isset($_POST['submit']))
@@ -15,12 +17,23 @@
         if(empty($_POST['days']))
             {
                 $err_days="*Days Required";
+                $has_error=true;  
             }
             else
             {			
                 $days=htmlspecialchars($_POST['days']);
                     
             }
+        if(empty($_POST['rooms']))
+            {
+                $err_rooms="*Rooms Required";
+                $has_error=true;  
+            }
+        else
+            {			
+                $rooms=htmlspecialchars($_POST['rooms']);
+                    
+            }    
 
         session_start();
         if(!isset($_SESSION['loggedinuser']))
@@ -48,17 +61,25 @@
         $count=$hotel["count"];
         
         $days=$_POST['days'];
+        $rooms=$_POST['rooms'];
+
         (int)$amount=(int)$hotel["price"]*(int)$days;
+
+        $capacity = $total_room - $count;
         
-        if(($amount!=0) && ($count <= $total_room))
+        if((!$has_error) && ($rooms <= $capacity))
         {
             insertBooking($b_id, $pht_id, 'active', $c_id);  
             insertBill($bl_id, 'active', 'unpaid', $amount, $c_id, $b_id);
 
-            (int)$count++;
+            (int)$count+=(int)$rooms;
 
             updateCountHotel($pht_id,$count);
-            header("Location:../User/home.php");
+           // header("Location:../User/home.php");
+        }
+        else
+        {
+            echo '<script>alert("Something Went wrong!")</script>';
         }
         
 
@@ -113,6 +134,11 @@
                         <td>Number Of Days:</td>
                         <td><input type="text" name="days" placeholder="how many days?"></td>
                         <td><span style="color:red"><?php echo $err_days;?></span></td>
+                    </tr>
+                    <tr>
+                        <td>Number Of rooms:</td>
+                        <td><input type="text" name="rooms" placeholder="how many rooms?"></td>
+                        <td><span style="color:red"><?php echo $err_rooms;?></span></td>
                     </tr>
                     <tr>
                         <td></td>
