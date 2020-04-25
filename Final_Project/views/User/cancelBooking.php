@@ -56,8 +56,8 @@
         {
 
             insertBookTracking($bt_id, $status, $active_status, $b_id, $c_id);
-            //deleteBooking($b_id);
-            //deleteBill($b_id);
+            deleteBooking($b_id);
+            deleteBill($b_id);
 
             header("Location:profile.php");
         }
