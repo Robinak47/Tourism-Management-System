@@ -6,7 +6,7 @@
       require_once ('../../controllers/transportController.php');
       require_once ('../../controllers/hotelController.php');
       require_once ('../../controllers/packageController.php');
-
+      require_once ('../../controllers/book_trackingController.php');
 
 
 
@@ -22,6 +22,29 @@
 
         
             $c_id = $_SESSION["loggedinuser"];
+            $bl_id=$_GET["id"]; 
+
+            $check_booking = getBook_TrackingU($c_id);
+            $bill = showBill($bl_id);
+            $b_id=$bill["b_id"];
+
+            $flag=0;
+            for($i = 0; $i < count($check_booking); ++$i) {
+           
+
+                if($b_id==$check_booking[$i]['b_id'])
+                    {
+                        echo '<script>alert("Already requested for cancel")</script>';
+            
+                        $flag=1;
+                           
+                    }    
+                    
+                    
+                }
+        if($flag==0)
+        {
+
             
             $x=rand(1,10000000); //payment
             $py_id="Py-".$x;
@@ -29,12 +52,12 @@
             $y=rand(1,10000000); //ticket
             $t_id="T-".$y;
 
-            $bl_id=$_GET["id"]; 
+            
             payBill($bl_id);
 
-            $bill = showBill($bl_id);
+            
             $amount= $bill["amount"];
-            $b_id=$bill["b_id"];
+            
 
             $booking = getBooking($b_id);
             $pht_id = $booking["pht_id"];
@@ -102,7 +125,7 @@
 
             header("Location:../User/profile.php");
             
-            
+        }
        
         }
         if(isset($_POST['back']))

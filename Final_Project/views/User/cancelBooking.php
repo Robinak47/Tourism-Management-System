@@ -18,6 +18,7 @@
         $c_id = $_SESSION["loggedinuser"];
 
         $payments =  getAllPaymentU($c_id);
+        $check_booking = getBook_TrackingU($c_id);
 
         $b_id = $_GET["id"];   
         $x=rand(1,10000000);
@@ -36,15 +37,27 @@
                $flag=1;
                
             }
+        }
+        for($i = 0; $i < count($check_booking); ++$i) {
+           
+
+        if($b_id==$check_booking[$i]['b_id'])
+            {
+                echo '<script>alert("Already requested")</script>';
+    
+                $flag=1;
+                   
+            }    
             
             
         }
+
         if($flag==0)
         {
 
             insertBookTracking($bt_id, $status, $active_status, $b_id, $c_id);
-            deleteBooking($b_id);
-            deleteBill($b_id);
+            //deleteBooking($b_id);
+            //deleteBill($b_id);
 
             header("Location:profile.php");
         }

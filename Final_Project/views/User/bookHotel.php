@@ -63,7 +63,7 @@
         $days=$_POST['days'];
         $rooms=$_POST['rooms'];
 
-        (int)$amount=(int)$hotel["price"]*(int)$days;
+        (int)$amount=(int)$hotel["price"]*(int)$days *(int)$rooms;
 
         $capacity = $total_room - $count;
         
@@ -75,7 +75,7 @@
             (int)$count+=(int)$rooms;
 
             updateCountHotel($pht_id,$count);
-           // header("Location:../User/home.php");
+            header("Location:../User/home.php");
         }
         else
         {
