@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2020 at 01:59 PM
+-- Generation Time: Apr 26, 2020 at 09:03 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -45,7 +45,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`a_id`, `name`, `mobile`, `email`, `address`, `age`, `dob`, `gender`, `status`) VALUES
-('A-1', 'mr. jack', '01564546600', 'rokivm@gmail.com', 'dhaka', '50', '2020-04-08', 'Male', 'active');
+('A-1', 'mr. jack', '01500000000', 'jack@gmail.com', 'Dhaka', '50', '1988-04-08', 'Male', 'active');
 
 -- --------------------------------------------------------
 
@@ -62,13 +62,6 @@ CREATE TABLE `bill` (
   `b_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `bill`
---
-
-INSERT INTO `bill` (`bl_id`, `status`, `pay_status`, `amount`, `c_id`, `b_id`) VALUES
-('Bl-1', 'active', 'paid', '200', 'C-1', 'B-1');
-
 -- --------------------------------------------------------
 
 --
@@ -81,13 +74,6 @@ CREATE TABLE `booking` (
   `status` varchar(50) NOT NULL,
   `c_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `booking`
---
-
-INSERT INTO `booking` (`b_id`, `pht_id`, `status`, `c_id`) VALUES
-('B-1', 'H-1', 'active', 'C-1');
 
 -- --------------------------------------------------------
 
@@ -102,13 +88,6 @@ CREATE TABLE `book_tracking` (
   `b_id` varchar(50) NOT NULL,
   `c_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `book_tracking`
---
-
-INSERT INTO `book_tracking` (`bt_id`, `status`, `active_status`, `b_id`, `c_id`) VALUES
-('Bt-1', 'active', 'cancelled', 'B-1', 'C-1');
 
 -- --------------------------------------------------------
 
@@ -135,8 +114,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`c_id`, `name`, `dob`, `age`, `mobile`, `address`, `passport_id`, `status`, `gender`, `email`, `image`) VALUES
-('C-1', 'masud rahman', '2020-04-22', '40', '01654656', 'newyork', '65161654651', 'active', 'Male', 'gyfgf@ymail.com', 'dsfsdfse'),
-('C-2', 'scania', '2020-04-08', '40', '01626485694', 'newyork', '1111-1111-111-1', 'active', 'Male', 'xyz@aiub.edu', 'fghyfiu');
+('C-1', 'Hemsworth', '1990-04-22', '40', '01600000000', 'Gazipur', '11111111111111', 'active', 'Male', 'Hemsworth@gmail.com', '../../storage/user_image/hemsworth.jpg');
 
 -- --------------------------------------------------------
 
@@ -162,7 +140,7 @@ CREATE TABLE `emp` (
 --
 
 INSERT INTO `emp` (`e_id`, `name`, `dob`, `salary`, `address`, `gender`, `email`, `mobile`, `status`, `a_id`) VALUES
-('E-1', 'hassan MAHMUD', '2020-04-12', '20000', 'silicon valley', 'Male', 'sdfa@gmail.com', '01265133540', 'active', 'A-1');
+('E-1', 'jackson', '2020-04-12', '20000', 'Laxmipur', 'Male', 'jackson@gmail.com', '01300000000', 'active', 'A-1');
 
 -- --------------------------------------------------------
 
@@ -188,9 +166,9 @@ CREATE TABLE `hotel` (
 --
 
 INSERT INTO `hotel` (`h_id`, `name`, `status`, `ref`, `price`, `room_no`, `details`, `location`, `count`, `e_id`) VALUES
-('H-1', 'radison', 'active', '006542aa', '3500', '70', 'double ac', 'chitagong', 0, 'E-1'),
-('H-3428075', 'Miami', 'active', 'miami1', '1000', '70', 'ac cabin and tv', 'Comilla', 0, 'E-1'),
-('H-5362051', 'Raxion', 'active', 'rax1', '1000', '70', 'ac cabin and tv', 'dhaka,bangladesh', 0, 'E-1');
+('H-1', 'Blu Radison', 'active', '006542aa', '3500', '70', 'Double Bed,AC,TV', 'Dhaka', 0, 'E-1'),
+('H-3428075', 'Miami', 'active', 'miami1', '1000', '70', 'AC cabin,single bed', 'Comilla', 0, 'E-1'),
+('H-5362051', 'SEA GIRL', 'active', 'rax1', '1000', '70', 'AC cabin and TV', 'Cox Bazar', 0, 'E-1');
 
 -- --------------------------------------------------------
 
@@ -203,13 +181,6 @@ CREATE TABLE `issue` (
   `comment` varchar(100) NOT NULL,
   `c_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `issue`
---
-
-INSERT INTO `issue` (`is_id`, `comment`, `c_id`) VALUES
-('I-1', 'good', 'C-1');
 
 -- --------------------------------------------------------
 
@@ -231,7 +202,7 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`id`, `password`, `type`, `ans`, `status`) VALUES
 ('A-1', 'A-1', 'admin', 'cat', 'active'),
-('C-1', 'C-2', 'customer', 'teddy', 'active'),
+('C-1', 'C-1', 'user', 'teddy', 'active'),
 ('E-1', 'E-1', 'employee', 'jerry', 'active');
 
 -- --------------------------------------------------------
@@ -247,8 +218,10 @@ CREATE TABLE `packages` (
   `location` varchar(50) NOT NULL,
   `image` varchar(100) NOT NULL,
   `price` varchar(50) NOT NULL,
+  `old_price` varchar(50) DEFAULT NULL,
   `features` varchar(50) NOT NULL,
   `travel_date` date NOT NULL,
+  `offer` varchar(50) DEFAULT NULL,
   `a_id` varchar(50) NOT NULL,
   `status` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -257,9 +230,9 @@ CREATE TABLE `packages` (
 -- Dumping data for table `packages`
 --
 
-INSERT INTO `packages` (`p_id`, `p_name`, `type`, `location`, `image`, `price`, `features`, `travel_date`, `a_id`, `status`) VALUES
-('P-1', 'cox bazar tour', 'holiday', 'sea beach', 'sdfdsf', '200', 'will be added', '2021-11-30', 'A-1', 'active'),
-('P-1813599', 'myown', 'Holiday', 'Dhaka', '../../storage/package_image/WIN_20191123_12_58_46_Pro.jpg', '2000', 'no added', '2020-04-08', 'A-1', 'active');
+INSERT INTO `packages` (`p_id`, `p_name`, `type`, `location`, `image`, `price`, `old_price`, `features`, `travel_date`, `offer`, `a_id`, `status`) VALUES
+('P-1', 'Sea Beach Tour', 'holiday', 'Saint Martin', '../../storage/package_image/pacSaint.jpg', '200', '200', 'Three days long tour, guide,food,medical support', '2020-11-30', 'off', 'A-1', 'active'),
+('P-1813599', 'Hill Tour', 'Holiday', 'RangaMati', '../../storage/package_image/pacRangamati.jpg', '2000', '2000', 'seven days long tour,guide,food,medical support', '2020-04-08', 'off', 'A-1', 'active');
 
 -- --------------------------------------------------------
 
@@ -276,14 +249,6 @@ CREATE TABLE `payment` (
   `bl_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `payment`
---
-
-INSERT INTO `payment` (`py_id`, `status`, `amount`, `c_id`, `b_id`, `bl_id`) VALUES
-('Py-1', 'active', '200', 'C-1', 'B-1', 'Bl-1'),
-('Py-2', 'active', '200', 'C-1', 'B-1', 'Bl-1');
-
 -- --------------------------------------------------------
 
 --
@@ -297,15 +262,6 @@ CREATE TABLE `review` (
   `c_id` varchar(50) NOT NULL,
   `b_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `review`
---
-
-INSERT INTO `review` (`r_id`, `comment`, `status`, `c_id`, `b_id`) VALUES
-('R-1', 'good', 'active', 'C-1', 'B-1'),
-('R-2', 'good', 'active', 'C-1', 'B-1'),
-('R-3', 'ffff', 'active', 'C-1', 'B-1');
 
 -- --------------------------------------------------------
 
@@ -323,13 +279,6 @@ CREATE TABLE `ticket` (
   `travel_date` date DEFAULT NULL,
   `seat_no` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `ticket`
---
-
-INSERT INTO `ticket` (`t_id`, `status`, `b_id`, `price`, `from_date`, `no_days`, `travel_date`, `seat_no`) VALUES
-('T-1', 'active', 'B-1', '200', '2020-04-09', '4', NULL, '4c');
 
 -- --------------------------------------------------------
 
@@ -358,9 +307,9 @@ CREATE TABLE `transport` (
 --
 
 INSERT INTO `transport` (`tr_id`, `name`, `type`, `traveldate`, `location_f`, `location_t`, `ref`, `seat_no`, `price`, `details`, `count`, `e_id`, `status`) VALUES
-('T-1', 'scania', 'bus', '2020-04-06', 'chittagong', 'dhaka', '0001sd', '40', '100', 'ac cabin and tv', 0, 'E-1', 'active'),
-('T-530218', 'rabeka', 'air', '2020-04-02', 'Dhaka', 'COmilla', 'miami1', '70', '100', 'now added', 0, 'E-1', 'inactive'),
-('T-8333457', 'prince', 'Bus', '2020-04-25', 'Dhaka', 'Comilla', 'prince11', '40', '320', 'Ac bus with tv and food support', 0, 'E-1', 'active');
+('T-1', 'scania', 'bus', '2020-04-06', 'Chittagong', 'Dhaka', '0001sd', '40', '100', 'AC and TV ', 0, 'E-1', 'active'),
+('T-530218', 'Green Line', 'air', '2020-04-02', 'Comilla', 'Dhaka', 'miami1', '70', '100', 'AC cabin', 0, 'E-1', 'active'),
+('T-9233822', 'Star Line', 'Bus', '2020-04-29', 'Dhaka', 'Comilla', 'Star114', '45', '350', 'Tv and food ', 0, 'E-1', 'active');
 
 -- --------------------------------------------------------
 
@@ -374,6 +323,13 @@ CREATE TABLE `web_info` (
   `details` varchar(50) NOT NULL,
   `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `web_info`
+--
+
+INSERT INTO `web_info` (`w_id`, `name`, `details`, `image`) VALUES
+('W-1', 'Sundorban', 'Sundorban is the largest forest in Bangladesh', '../../storage/web_info_image/exp1.jpg');
 
 --
 -- Indexes for dumped tables

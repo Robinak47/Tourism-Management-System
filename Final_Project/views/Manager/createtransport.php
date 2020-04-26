@@ -42,7 +42,7 @@
                             var type1 = document.getElementById( "t2" );
                             var type2 = document.getElementById( "t3" );
                             var type3 = document.getElementById( "t4" );
-                            var type4 = document.getElementById( "t5" );
+                           
                             var date = document.getElementById( "t6" );
                             var locf = document.getElementById( "t7" );
                             var loct = document.getElementById( "t8" );
@@ -90,7 +90,7 @@
                            
                             }
 
-                            if( type1.checked == false && type2.checked == false && type3.checked == false && type4.checked == false )
+                            if( type1.checked == false && type2.checked == false && type3.checked == false  )
                             {
                             error = " You Have To select a type. ";
                             
@@ -101,7 +101,7 @@
                            
                             }
 
-                            if( type1.checked ==true || type2.checked ==true || type3.checked ==true || type4.checked ==true )
+                            if( type1.checked ==true || type2.checked ==true || type3.checked ==true )
                             {
                             error = "";
                             
@@ -437,7 +437,7 @@
                 <tr>
                     <td> <h3>Type:</h3></td>
                     
-                    <td><h3><input type="radio" name="type" id="t2" value="Bus" > bus <input type="radio" name="type" id="t3" value="air" > air <input type="radio" name="type" id="t4" value="train" >train<input type="radio" name="type" id="t5" value="car" >car</h3></td>
+                    <td><h3><input type="radio" name="type" id="t2" value="Bus" > bus <input type="radio" name="type" id="t3" value="air" > air <input type="radio" name="type" id="t4" value="train" >train</h3></td>
                     <td><br> <span id="na1" style="color:red"></td>
 
                 </tr>
