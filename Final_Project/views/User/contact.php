@@ -1,7 +1,30 @@
 <?php
     include '../../controllers/issueController.php';
 
+
+    session_start();
+        if(!isset($_SESSION['loggedinuser']))
+        {
+            header("Location:../login.php");
+        }
+
+        
+        $c_id = $_SESSION["loggedinuser"];
+            
+            
+    if(isset($_POST['submit']))
+            {
+                
+                
+                    $x=rand(1,10000000);
+                    $isid="I-".$x;
+                    $comment=$_POST['comment'];
+
+                    insertIssue($isid, $comment, $c_id);
+                
+            }
 ?>
+
 <html>
     <head>
         <title>Contact</title>
@@ -32,52 +55,70 @@
                 
             }    
         </style>
+        <script type="text/javascript">
+            function validate() 
+            {
+
+                var error="";
+                var chc="";
+                var name = document.getElementById( "t1" );
+
+            
+
+            if( name.value == "" )
+                {
+                    error = " You Have To Write Issue ";
+                            
+                    document.getElementById( "na" ).innerHTML = error;
+
+                    chc="ok";
+                           
+                }
+
+            if( name.value != "" )
+                {
+                    if(!name.value.replace(/\s/g, '').length)
+                        {
+                            error = " Issue cannot be only space. ";
+                            
+                            document.getElementById( "na" ).innerHTML = error;
+                            chc="ok";
+                        }
+
+                    else if(name.value.match(/^[a-zA-Z\s]+$/))
+                        {
+                            error = "";
+                            
+                            document.getElementById( "na" ).innerHTML = error;
+                                    
+                        }
+                    else{
+                                   
+                            error = " Issue can  only be latter and space. ";
+                            
+                            document.getElementById( "na" ).innerHTML = error;
+                            chc="ok";
+                        }
+                            
+                           
+                }
+
+                if(chc!="")
+                    {   
+                        return false;
+                    }
+                        
+                else
+                    {  
+                        return true;
+                    }
+        }
+
+
+            </script>
     </head>
     <body class="bg">
-    <?php
-            $err_id="";
-            $id="";
-            $err_comment="";
-            $comment="";
-            $has_error=false;
-            
-    if(isset($_POST['submit']))
-            {
-                
-                if(empty($_POST['id']))
-                {
-                    $err_id="*Valid id Required";
-                    $has_error=true;
-                }
-                else
-                {			
-                    $id=htmlspecialchars($_POST['id']);
-                   
-                }
-                
-                if(empty($_POST['comment']))
-                {
-                    $err_comment="*comment Required";
-                    $has_error=true;
-                }
-                else
-                {			
-                    $comment=htmlspecialchars($_POST['comment']);
-                }
-
-                if(!$has_error)
-		        {
-                    $x=rand(1,10000000);
-                    $isid="I-".$x;
-                    $cid=$_POST['id'];
-                    $comment=$_POST['comment'];
-
-                    insertIssue($isid, $comment, $cid);
-                }
-                else
-                    echo '<script>alert("Fill up properly")</script>';
-            }
-            ?>
+    
         <ul class="active">
         <li><a href="home.php">Home</a></li>
             <li><a href="packages.php">Packages</a></li>
@@ -93,19 +134,19 @@
         <div style="position:absolute; top: 100px; left: 30px;">
            <font size="60"><h1>Feel free to contact with us regarding any issue</h1> </font>
         </div>  
-        <form action="" method="post">
+        <form action="" method="post" onsubmit="return validate();">
             <table style="position:absolute; top: 200; left: 200px;">
                 <tbody>
                     <tr>
                         <td align="right">ID:</td>
-                        <td><input type="text" name="id" style="width: 300; height: 40;" placeholder="write your id"></td>
-                        <td><span style="color:red"><?php echo $err_id;?></span></td>
+                        <td><input type="text" value="<?php echo $c_id?>" style="width: 300; height: 40;" placeholder="write your id"></td>
+                       
                     </tr>
         
                     <tr>
                         <td align="right">Comment:</td>
-                        <td><input name="comment" value="<?php echo $comment;?>" type="text" style="width: 450; height: 200;" placeholder="write your issue or thoughts"></td>
-                        <td><span style="color:red"><?php echo $err_comment;?></span></td>
+                        <td><input name="comment" id="t1" type="text" style="width: 450; height: 200;" placeholder="write your issue or thoughts"></td>
+                        <td><span id="na" style="color:red"></span></td>
                     </tr>
                     <tr>
                         <td></td>
