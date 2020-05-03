@@ -29,6 +29,57 @@
             $b_id=$bill["b_id"];
 
             $flag=0;
+
+            $nameoncard="";
+            $err_nameoncard="";
+            $choosecard="";
+            $err_choosecard="";
+            $cardno="";
+            $err_cardno="";
+            $ccv="";
+            $err_ccv="";
+            if(empty($_POST['nameoncard']))
+                {
+                    $err_nameoncard="*Name Required";
+                    $flag=1;
+                }
+                else
+                {			
+                    $nameoncard=htmlspecialchars($_POST['nameoncard']);
+                    
+                }
+
+                if(empty($_POST['choosecard']))
+                {
+                    $err_choosecard="*Card Required";
+                    $flag=1;
+                }
+                else
+                {			
+                    $choosecard=htmlspecialchars($_POST['choosecard']);
+                    
+                }
+
+                if(empty($_POST['cardno']))
+                {
+                    $err_cardno="*Card Number Required";
+                    $flag=1;
+                }
+                else
+                {			
+                    $cardno=htmlspecialchars($_POST['cardno']);
+                    
+                }
+                if(empty($_POST['ccv']))
+                {
+                    $err_ccv="*CCV Required";
+                    $flag=1;
+                }
+                else
+                {			
+                    $ccv=htmlspecialchars($_POST['ccv']);
+                    
+                }    
             for($i = 0; $i < count($check_booking); ++$i) {
            
 
@@ -137,6 +188,8 @@
             
             
         }
+        else
+            echo '<script>alert("Something Went wrong!")</script>';
        
         }
         if(isset($_POST['back']))
@@ -189,7 +242,38 @@
                         
                         <input type='date' name='date'>
         </div>
-            <table border="1" style="position:absolute; top: 300px; left: 130px; width:150">
+        <div style="position:absolute; top: 160px; left: 580px;">
+        <h2>Payment Information</h2><hr>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Name On Card</td>
+                    <td><input type="text" name="nameoncard"></td>
+                </tr>
+                <tr>
+                    <td>Choose Card</td>
+                    <td>
+                        <select name="choosecard">
+                            <option value="Visa">Visa</option>
+                            <option value="master">Master Card</option>
+                            <option value="Amrexpress">American Express</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Card Number</td>
+                    <td><input type="text" name="cardno"></td>
+                </tr>
+                <tr>
+                    <td>CCV</td>
+                    <td><input type="text" name="ccv"></td>
+                </tr>
+            </tbody>
+        </table>
+                       
+                       
+        </div>
+            <table border="1" style="position:absolute; top: 400px; left: 330px; width:150">
                 <tbody>
                     
                     <tr>
