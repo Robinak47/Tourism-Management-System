@@ -212,31 +212,7 @@
                     </tbody>
                 </table>
         </div>
-      <!--  <div style="position:absolute; top: 400px; left: 1000px;"> 
-            <h2>Billing History</h2>
-            <table border="1">
-                <tbody>
-                    <tr>
-                        <td>Bill Id</td>
-                        <td>Payment Status</td>
-                        <td>amount</td>
-                        <td>Booking Id</td>
-                    </tr>
-                   <?php
-                            /*foreach($bills as $bill)
-                                {
-                                    echo "<tr>";
-                                    echo "<td>".$bill["bl_id"]."</td>";
-                                    echo "<td>".$bill["pay_status"]."</td>";
-                                    echo "<td>".$bill["amount"]."</td>";
-                                    echo "<td>".$bill["b_id"]."</td>";
-                                    echo "</tr>";
-                                }*/
-                    ?>
-                    
-                </tbody>
-            </table>
-        </div>-->
+      
         <div style="position:absolute; top: 100px; left: 1100px; overflow: scroll; height: 25.5%;"> 
             <h2>Track Your Booking Status</h2>
             <table border="1">
@@ -295,6 +271,7 @@
                     <tr>
                         <td>Find Your Booking</td>
                         <td><select name="find_booking">
+                        <option></option>
                                 <?php
                                     foreach($bookings as $booking)
                                     {
