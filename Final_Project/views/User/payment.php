@@ -53,7 +53,7 @@
             $t_id="T-".$y;
 
             
-            payBill($bl_id);
+            
 
             
             $amount= $bill["amount"];
@@ -64,7 +64,7 @@
 
             //echo $pht_id;
 
-            insertPayment($py_id, 'active', $amount, $c_id, $b_id, $bl_id);
+            
 
             if($pht_id[0]=="P")
             {
@@ -75,8 +75,11 @@
                 $seat_no="";
 
                 $travel_date=$package["travel_date"];
-
+                payBill($bl_id);
+                insertPayment($py_id, 'active', $amount, $c_id, $b_id, $bl_id);
                 insertTicket($t_id, 'active', $b_id, $amount, $from_date, $no_days, $travel_date, $seat_no);
+
+                header("Location:../User/profile.php");
             }
             else if($pht_id[0]=="T")
             {
@@ -87,8 +90,11 @@
 
                 $travel_date=$transport["traveldate"];
                 $seat_no=$transport["ref"];
-
+                payBill($bl_id);
+                insertPayment($py_id, 'active', $amount, $c_id, $b_id, $bl_id);
                 insertTicket($t_id, 'active', $b_id, $amount, $from_date, $no_days, $travel_date, $seat_no);
+
+                header("Location:../User/profile.php");
             }
             else if($pht_id[0]=="H")
             {
@@ -117,13 +123,18 @@
                 $seat_no=$hotel["details"];
                 if($date!="")
                 {
+                    payBill($bl_id);
+                    insertPayment($py_id, 'active', $amount, $c_id, $b_id, $bl_id);
                     insertTicket($t_id, 'active', $b_id, $amount, $from_date, $no_days, $travel_date, $seat_no);
+
+                    header("Location:../User/profile.php");
                 }
                 else
-                echo "Put date to book hotel";
+
+                    echo '<script>alert("Something Went wrong!")</script>';
             }
 
-            header("Location:../User/profile.php");
+            
             
         }
        
