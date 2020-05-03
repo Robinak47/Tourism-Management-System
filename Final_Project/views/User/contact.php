@@ -138,7 +138,7 @@
                 <tbody>
                     <tr>
                         <td align="right">ID:</td>
-                        <td><input type="text" value="<?php echo $c_id?>" style="width: 300; height: 40;" placeholder="write your id"></td>
+                        <td><input type="text" value="<?php echo $c_id?>" style="width: 300; height: 40;" placeholder="write your id" readonly></td>
                        
                     </tr>
         
