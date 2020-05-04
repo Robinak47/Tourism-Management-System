@@ -33,8 +33,8 @@
                 
             }    
         </style>
-
-        <script>
+                                                        
+        <script>                                      
             function search()
             {
               http = new XMLHttpRequest();
@@ -50,6 +50,9 @@
               http.send();
             }
           </script>
+
+
+          
     </head>
     <body class="bg">
     <?php
