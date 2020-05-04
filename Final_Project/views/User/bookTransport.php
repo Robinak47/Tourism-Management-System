@@ -69,7 +69,7 @@
     }
     if(isset($_POST['back']))
     {
-        header("Location:hotel.php");
+        header("Location:Transport.php");
        
     }
 ?>
