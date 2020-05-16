@@ -1,24 +1,24 @@
 .title {
-    background-color: rgb(226, 88, 157);
-    color: white;
-    padding: 4px;
-    min-width:400px;
-    font-size: 40px;
-    text-align: center;
-    border: solid;
-    margin-left:380px;
-    
-    position: absolute;
+  background-color: #581845;
+  color: white;
+  padding: 4px;
+  min-width:400px;
+  font-size: 40px;
+  text-align: center;
+  border: solid;
+  margin-left:380px;
+  
+  position: absolute;
 
-   
-    
  
+  
+
 }
-  
-  
-  
+
+
+
 .dropbtn {
-  background-color: rgb(226, 99, 14);
+  background-color: #581845;
   color: white;
   padding: 20px;
   min-width:300px;
@@ -26,7 +26,7 @@
   width:30%;
   text-align:left;
   
-  border: none;
+  border: solid;
   cursor: pointer;
   
 }
@@ -62,7 +62,7 @@
 
 
 .btn {
-background-color: DodgerBlue; /* Blue background */
+background-color:#900c3f; /* Blue background */
 border: none; /* Remove borders */
 color: white; /* White text */
 padding: 18px; /* Some padding */
@@ -74,15 +74,14 @@ cursor: pointer; /* Mouse pointer on hover */
 
 /* Darker background on mouse-over */
 .btn:hover {
-background-color: RoyalBlue;
+background-color: #b9407d;
 }
 
 
 
 
-
 .welcome {
-  background-color: rgb(88, 148, 226);
+  background-color: #581845;
   color: white;
   padding: 18px;
   min-width:350px;
@@ -102,6 +101,9 @@ background-color: RoyalBlue;
 
 
 
+
+
+
   table {
     border-collapse: collapse;
     width: 100%;
@@ -116,10 +118,11 @@ background-color: RoyalBlue;
   }
   
   tr:nth-child(even) {background-color: #f2f2f2;}
+  tr:nth-child(odd) {background-color: #d377b7;}
 
   .text{
 
-    color: rgb(226, 81, 14);
+    color: #f2f2f2;
     margin-top: 80px;
     font-size: 16px;
     margin-left:380px;
@@ -153,23 +156,23 @@ background-color: RoyalBlue;
 }
 
 
+.panel {
+  display: inline-block;
+  background:#581845;
+  min-height: 500px;
+  min-width: 1080px;
+  height: 100px;
+  padding: 10px;
+  border: navajowhite;
+  margin-right: 30px;
+  margin-left: 380px;
+  margin-top:100px ;
+  margin-bottom: 300px;
+}
 
-  .panel {
-    display: inline-block;
-    background:rgb(255, 255, 250);
-    min-height: 500px;
-    min-width: 1080px;
-    height: 100px;
-    padding: 10px;
-    border: navajowhite;
-    margin-right: 30px;
-    margin-left: 380px;
-    margin-top:100px ;
-    margin-bottom: 300px;
-  }
 
-  body{
-    height: 400px;
-  }
-
+body{
+  height: 400px;
+  background-color:#581845;
+}
   

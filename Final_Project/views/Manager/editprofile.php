@@ -165,6 +165,7 @@ include '../../controllers/employeeController.php';
                     <td> <h3>Name:</h3></td>
                     
                     <td><h3><input type="text" name="ename" value="<?php echo $emp["name"]?>" readonly></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -173,6 +174,7 @@ include '../../controllers/employeeController.php';
                     <td> <h3>Date of Birth:</h3></td>
                     
                     <td><h3><input type="text" name="date" value="<?php echo $emp["dob"]?>" readonly></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -181,6 +183,7 @@ include '../../controllers/employeeController.php';
                     <td> <h3>Gender:</h3></td>
                     
                     <td><h3><input type="text" name="gender" value="<?php echo $emp["gender"]?>" readonly ></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -216,6 +219,7 @@ include '../../controllers/employeeController.php';
                     <td> <h3>Salary:</h3></td>
                     
                     <td><h3><input type="text" name="ename" value="<?php echo $emp["salary"]?>" readonly></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -229,6 +233,7 @@ include '../../controllers/employeeController.php';
                     <td> <h3>Security Qus:</h3></td>
                     
                     <td><h3>What's Your Pet Name?</h3></td>
+                    <td></td>
                  
 
                 </tr>

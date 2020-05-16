@@ -167,6 +167,7 @@ include '../../controllers/adminController.php';
                     <td> <h3>Name:</h3></td>
                     
                     <td><h3><input type="text" name="ename" value="<?php echo $admin["name"]?>" readonly></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -175,6 +176,7 @@ include '../../controllers/adminController.php';
                     <td> <h3>Date of Birth:</h3></td>
                     
                     <td><h3><input type="text" name="date" value="<?php echo $admin["dob"]?>" readonly></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -183,6 +185,7 @@ include '../../controllers/adminController.php';
                     <td> <h3>Gender:</h3></td>
                     
                     <td><h3><input type="text" name="gender" value="<?php echo $admin["gender"]?>" readonly ></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -222,6 +225,7 @@ include '../../controllers/adminController.php';
                     <td> <h3>Security Qus:</h3></td>
                     
                     <td><h3>What's Your Pet Name?</h3></td>
+                    <td></td>
                  
 
                 </tr>

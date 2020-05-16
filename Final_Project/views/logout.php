@@ -3,7 +3,7 @@
        if(isset( $_SESSION["loggedinuser"]))
        {
            session_destroy();
-           header("Location:login.php");
+           header("Location:User/home.php");
        }
 
 ?>

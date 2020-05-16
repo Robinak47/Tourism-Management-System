@@ -123,6 +123,8 @@
                     <td> <h3>Hotel ID:</h3></td>
                     
                     <td><h3><input type="text" name="Tid" value="<?php echo $htl["h_id"]?>"  readonly></h3></td>
+                    <td></td>
+        
                     
                  
 
@@ -132,6 +134,7 @@
                     <td> <h3>Hotel Name:</h3></td>
                     
                     <td><h3><input type="text" name="Tname" value="<?php echo $htl["name"]?>" readonly ></h3></td>
+                    <td></td>
                     
                  
 
@@ -144,6 +147,7 @@
                     <td> <h3>Location :</h3></td>
                     
                     <td style="text-align='right'"><h3><input type="text"  name="locf" value="<?php echo $htl["location"]?>" readonly></h3></td>
+                    <td></td>
                     
                  
 
@@ -155,6 +159,7 @@
                     <td> <h3>No. of Room:</h3></td>
                     
                     <td style="text-align='right'"><h3><input type="text" name="seatno" value="<?php echo $htl["room_no"]?>" readonly ></h3></td>
+                    <td></td>
                     
                  
 
@@ -173,6 +178,7 @@
                     <td> <h3>Ref No.</h3></td>
                     
                     <td style="text-align='right'"><h3><input type="text" name="ref" value="<?php echo $htl["ref"]?>" readonly ></h3></td>
+                    <td></td>
                   
                  
 

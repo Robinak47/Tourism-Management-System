@@ -79,9 +79,9 @@
                             $err_feature="*features can not be only spacces";
                             $has_error=true;
                         }
-                        else if(!preg_match('/^[a-zA-Z\s]+$/',$feature))
+                        else if(!preg_match('/^[a-zA-Z.,\s]+$/',$feature))
                         {
-                            $err_feature="*features only contains letter and space";
+                            $err_feature="*features only contains letter,coma and space";
                             $has_error=true;
                         }
                     }
@@ -146,6 +146,7 @@
                     <td> <h3>Package Name:</h3></td>
                     
                     <td><h3><input type="text" name="pname" value="<?php echo $package["p_name"]?>" readonly ></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -154,6 +155,7 @@
                     <td> <h3>Type:</h3></td>
                     
                     <td style="text-align='right'"><h3><input type="text" name="type" value="<?php echo $package["type"]?>" readonly></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -162,6 +164,7 @@
                     <td> <h3>Location:</h3></td>
                     
                     <td style="text-align='right'"><h3><input type="text" name="loc" value="<?php echo $package["location"]?>" readonly></h3></td>
+                    <td></td>
                  
 
                 </tr>

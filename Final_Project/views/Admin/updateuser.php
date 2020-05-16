@@ -143,6 +143,7 @@ $has_error=false;
                     <td> <h3>Date of Birth:</h3></td>
                     
                     <td><h3><input type="text" name="date" value="<?php echo $cms["dob"]?>" readonly></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -151,6 +152,7 @@ $has_error=false;
                     <td> <h3>AGE:</h3></td>
                     
                     <td><h3><input type="text" name="age" value="<?php echo $cms["age"]?>" readonly></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -159,6 +161,7 @@ $has_error=false;
                     <td> <h3>Gender:</h3></td>
                     
                     <td><h3><input type="text" name="gender" value="<?php echo $cms["gender"]?>" readonly ></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -167,6 +170,7 @@ $has_error=false;
                     <td> <h3>Email:</h3></td>
                     
                     <td style><h3><input type="text" name="email" value="<?php echo $cms["email"]?>" readonly ></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -175,6 +179,7 @@ $has_error=false;
                     <td> <h3>Phone No:</h3></td>
                     
                     <td><h3><input type="text" name="phoneno" value="<?php echo $cms["mobile"]?>" readonly ></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -183,6 +188,7 @@ $has_error=false;
                     <td> <h3>Address:</h3></td>
                     
                     <td><h3><input type="text" name="address" value="<?php echo $cms["address"]?>" readonly ></h3></td>
+                    <td></td>
                  
 
                 </tr>

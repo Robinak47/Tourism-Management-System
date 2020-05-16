@@ -143,6 +143,7 @@ $emp=getEmployee($eid);
                     <td> <h3>Date of Birth:</h3></td>
                     
                     <td><h3><input type="text" name="date"  value="<?php echo $emp["dob"]?>" readonly></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -151,6 +152,7 @@ $emp=getEmployee($eid);
                     <td> <h3>Gender:</h3></td>
                     
                     <td><h3><input type="text" name="gender"  value="<?php echo $emp["gender"]?>" readonly > </h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -159,6 +161,7 @@ $emp=getEmployee($eid);
                     <td> <h3>Email:</h3></td>
                     
                     <td style><h3><input type="text" name="email" value="<?php echo $emp["email"]?>" readonly ></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -167,6 +170,7 @@ $emp=getEmployee($eid);
                     <td> <h3>Phone No:</h3></td>
                     
                     <td><h3><input type="text" name="phoneno" value="<?php echo $emp["mobile"]?>" readonly ></h3></td>
+                    <td></td>
                  
 
                 </tr>
@@ -175,6 +179,7 @@ $emp=getEmployee($eid);
                     <td> <h3>Address:</h3></td>
                     
                     <td><h3><input type="text" name="address" value="<?php echo $emp["address"]?>" readonly ></h3></td>
+                    <td></td>
                  
 
                 </tr>

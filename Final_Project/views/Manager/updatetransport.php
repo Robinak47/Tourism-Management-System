@@ -125,6 +125,7 @@
                     <td> <h3>Transport ID:</h3></td>
                     
                     <td><h3><input type="text" name="Tid" value="<?php echo $tran["tr_id"]?>"  readonly></h3></td>
+                    <td></td>
                     
                  
 
@@ -134,6 +135,7 @@
                     <td> <h3>Transport Name:</h3></td>
                     
                     <td><h3><input type="text" name="Tname" value="<?php echo $tran["name"]?>"  readonly ></h3></td>
+                    <td></td>
                     
                  
 
@@ -142,6 +144,7 @@
                     <td> <h3>Type:</h3></td>
                     
                     <td><h3><input type="text" name="type" value="<?php echo $tran["type"]?>"   readonly ></h3></td>
+                    <td></td>
 
                 </tr>
 
@@ -149,6 +152,7 @@
                     <td> <h3>Travel Date:</h3></td>
                     
                     <td><h3><input type="text" name="date" value="<?php echo $tran["traveldate"]?>"   readonly ></h3></td>
+                    <td></td>
                   
                  
 
@@ -158,6 +162,7 @@
                     <td> <h3>Location From:</h3></td>
                     
                     <td style="text-align='right'"><h3><input type="text"  name="locf" value="<?php echo $tran["location_f"]?>"  readonly></h3></td>
+                    <td></td>
                     
                  
 
@@ -167,6 +172,7 @@
                     <td> <h3>Location To:</h3></td>
                     
                     <td style="text-align='right'"><h3><input type="text"  name="loct" value="<?php echo $tran["location_t"]?>"  readonly ></h3></td>
+                    <td></td>
                     
                  
 
@@ -176,6 +182,7 @@
                     <td> <h3>No. of Seat:</h3></td>
                     
                     <td style="text-align='right'"><h3><input type="text" name="seatno" value="<?php echo $tran["seat_no"]?>"  readonly ></h3></td>
+                    <td></td>
                     
                  
 
@@ -194,6 +201,7 @@
                     <td> <h3>Ref No.</h3></td>
                     
                     <td style="text-align='right'"><h3><input type="text" name="ref" value="<?php echo $tran["ref"]?>"  readonly ></h3></td>
+                    <td></td>
                   
                  
 

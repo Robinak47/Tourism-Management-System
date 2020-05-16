@@ -144,12 +144,12 @@
             
             
 
-            <input type="button" id="t1" style="background-color:green"> 
-            <input type="button" id="t2" style="background-color:rgb(153, 102, 255);margin-left: 60px">
-            <input type="button" id="t3" style="background-color:rgb(255, 153, 0);margin-left: 60px"> <br>
+			<input type="button" id="t1" style="background-color:#ff5733;"> 
+            <input type="button" id="t2" style="background-color:#00005c;margin-left: 60px"><br>
+            <input type="button" id="t3" style="background-color:#053f5e;margin-left: 240px; margin-top:20px"> <br>
 
-            <input type="button" id="t4" style="background-color:rgb(255, 51, 153)"> 
-            <input type="button" id="t5" style="background-color:rgb(0, 230, 230);margin-left: 60px">
+            <input type="button"id="t4" style="background-color:#ad1d45; margin-top:20px"> 
+            <input type="button" id="t5" style="background-color:#00454a;margin-left: 60px; margin-top:20px">
     
 
             
