@@ -64,7 +64,7 @@
                     <th>ACTIONS</th>
                     
                     </tr>
-                    <tr>
+                   
 
                     <?php
 				        foreach($packages as $package)
