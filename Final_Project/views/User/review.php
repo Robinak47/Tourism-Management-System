@@ -43,6 +43,7 @@
         if($comment!="")
         {
             insertReview($r_id,$comment,'active',$c_id,$b_id);
+              header("Location:profile.php");
         }
         
        
