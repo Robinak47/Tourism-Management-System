@@ -160,6 +160,8 @@
 
                     
                     editUser($cid, $name, $dob, '20', $mobile, $address, $passid, $gender, $email, $target_file);
+			header("Location:profile.php");
+
                     
                 }
                 else
