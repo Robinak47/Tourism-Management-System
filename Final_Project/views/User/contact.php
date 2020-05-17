@@ -92,13 +92,7 @@
                             document.getElementById( "na" ).innerHTML = error;
                                     
                         }
-                    else{
-                                   
-                            error = " Issue can  only be latter and space. ";
-                            
-                            document.getElementById( "na" ).innerHTML = error;
-                            chc="ok";
-                        }
+                    
                             
                            
                 }
