@@ -23,6 +23,7 @@
         
         }
     </style>
+            
     </head>
     <body class="bg">
     <?php
@@ -55,6 +56,10 @@
 
             $has_error=false;
 
+            $x=rand(1,10000000);
+            $cid="C-".$x;
+            
+
             if(isset($_POST['submit']))
             {
                 
@@ -69,6 +74,7 @@
                     if (!preg_match("/^[a-zA-Z ]*$/",$fname)) 
                     {
                         $err_fname = "Valid Name Required";
+                        $has_error=true;
                     }
                 
                         
@@ -84,9 +90,10 @@
                 else
                 {			
                     $email=htmlspecialchars($_POST['email']);
-                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
+                    if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i",$email)) 
                     {
                         $err_email = "Valid email required";
+                        $has_error=true;
                     }
                   
                         
@@ -101,6 +108,11 @@
                 else
                 {			
                     $phoneNumber=htmlspecialchars($_POST['phoneNumber']);
+                    if (!preg_match("/^[0-9]{11}+$/",$phoneNumber)) 
+                    {
+                        $err_phoneNumber = "Valid Number Required";
+                        $has_error=true;
+                    }
                     
                 }
 
@@ -147,18 +159,25 @@
                 else
                 {			
                     $passid=htmlspecialchars($_POST['passid']);
-                    echo "$passid \n";
+                    if (!preg_match("/^[_a-zA-Z0-9]{11}+$/",$passid)) 
+                    {
+                        $err_passid = "Valid ID Required";
+                        $has_error=true;
+                    }
                 }
+
                 if((empty($_POST['pass'])) && (empty($_POST['cpass'])))
                 {
                     $err_pass="*password Required";
                 }
                 else
-                {			
-                    if($pass==$cpass)
+                {	
+                    $pass=$_POST['pass'];
+                    $cpass=$_POST['cpass'];	
+                    if($pass == $cpass)
                          $pass=htmlspecialchars($_POST['pass']);
                     else
-                    $err_pass="password mismatch";     
+                        $err_pass="password mismatch";     
                     
                 }
                 
@@ -186,11 +205,13 @@
 
                 if(!$has_error)
 		        {
-                    $x=rand(1,10000000);
-                    $cid="C-".$x;
+                    
+
+                    
+                    $c_id=$_POST['cid'];
                     $fname=$_POST['fname'];
                     $dob=$_POST['dob'];
-                    //$age= $_POST['age'];
+                    
                     $phoneNumber= $_POST['phoneNumber'];
                     $address1= $_POST['address1'];
                     $passid= $_POST['passid'];
@@ -208,15 +229,26 @@
                     move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
 
                     
-                    insertUser($cid, $fname, $dob, '10', $phoneNumber, $address1, $passid, 'active', $gender, $email, $target_file);
+                    insertUser($c_id, $fname, $dob, '29', $phoneNumber, $address1, $passid, 'active', $gender, $email, $target_file);
                     
-                    accessUser($cid, $pass, 'user', $ans, 'active');
+                    accessUser($c_id, $pass, 'user', $ans, 'active');
+
+                    
+
+
+                    header("Location:home.php");
                 }
                 else
                     echo '<script>alert("Fill Up Properly")</script>';
 
 
             }
+
+            if(isset($_POST['cancel']))
+    {
+                header("Location:home.php");
+       
+    }
         ?>
         
         <h2>User Registration</h2>
@@ -225,7 +257,15 @@
         <form method="post" action="" enctype="multipart/form-data">
             <table align="center">
                 <tbody>
-                    <tr>
+                    
+                <tr>
+                        <td>User ID</td>
+                        <td><input type="text" style="width: 250;" value="<?php echo $cid;?>" name="cid" readonly></td>
+                        <td><span style="color:red">*Please Store Your ID with Care.</span></td>
+                    </tr>
+                
+                
+                <tr>
                         <td>Name</td>
                         <td><input type="text" style="width: 250;" value="<?php echo $fname;?>" name="fname"></td>
                     </tr>
@@ -319,7 +359,7 @@
                         <td>Security Question:</td>
                         <td><select name="qsn" style="width: 250;">
                                 <option value=""></option>
-                                <option value="Where was you born?">Where was you born?</option>
+                                <option value="Where were you born?">Where was you born?</option>
                                 <option value="Where did your parents first meet?">Where did your parents first meet?</option>
                                 <option value="What is your favourite sport?">What is your favourite sport?</option>
                                 <option value="What is the name of your pet?">What is the name of your pet?</option>
@@ -349,6 +389,10 @@
                         <td colspan="2">
                             <input type="submit" name="submit" value="Submit" style="width: 100;">
                         </td>
+                        <td colspan="2">
+                            <input type="submit" name="cancel" value="cancel" style="width: 100;">
+                        </td>
+                        
                         
                         
                     </tr>
