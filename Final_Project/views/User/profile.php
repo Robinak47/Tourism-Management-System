@@ -58,6 +58,7 @@
     }
 ?>
 
+
 <html>
     <head>
         <title>Profile</title>
@@ -87,6 +88,17 @@
                 
             }
         </style>
+        <script>
+        function printBill(){
+            var printMe = document.getElementById('myBill');
+            var wme = window.open("", "", "width=900, height=700");
+            wme.document.write(printMe.outerHTML);
+            wme.document.close();
+            wme.focus();
+            wme.print();
+            //wme.close();
+        }
+    </script>
     </head>
     <body class="bg">
     <ul class="active">
@@ -264,7 +276,7 @@
             </table>
         </div>
         <form action="" method="post">
-        <div style="position:absolute; top: 750px; left: 550px;"> 
+        <div style="position:absolute; top: 750px; left: 550px;" id="myBill"> 
             <h2>Print Your Ticket to Consume The Service</h2>
             <table border="1">
                 <tbody>
@@ -292,6 +304,9 @@
                         <td>Travel Date</td>
                         <td>Seat No.</td>
                     </tr>
+                    <tr>
+                        <td><input type="button" name="create_pdf" value="Create PDF" onclick="printBill()"></td>
+                    </tr>
                     <?php                        
 
                         foreach($tickets as $ticket)
@@ -316,15 +331,15 @@
         </form>
 
         <div class="footer">
-            <p style="position: absolute;">Hot Line : +88018356465 <br>
-               Facebook : www.facebook.com/tms_bd <br>
-               fax : 0245699
+            <p style="position: absolute;">Hot Line : +88012345678 <br>
+               Facebook : www.facebook.com/tourism_bd <br>
+               fax : 026666
             </p>
-            <p align="right">Powered by :Bengal software <br>
-               www.bgsoft.com.bd <br>
-               +8805412245  
+            <p align="right">Powered by :Tour Management <br>
+               www.tourism.com <br>
+               +8809612345  
             </p>
-        </div>
+          </div>
         
     </body>
 </html>
