@@ -16,6 +16,14 @@
         {
             header("Location:../login.php");
         }
+            $nameoncard="";
+            $err_nameoncard="";
+            $choosecard="";
+            $err_choosecard="";
+            $cardno="";
+            $err_cardno="";
+            $ccv="";
+            $err_ccv="";
         if(isset($_POST['submit']))
         {
             
@@ -30,14 +38,7 @@
 
             $flag=0;
 
-            $nameoncard="";
-            $err_nameoncard="";
-            $choosecard="";
-            $err_choosecard="";
-            $cardno="";
-            $err_cardno="";
-            $ccv="";
-            $err_ccv="";
+            
             if(empty($_POST['nameoncard']))
                 {
                     $err_nameoncard="*Name Required";
@@ -46,6 +47,11 @@
                 else
                 {			
                     $nameoncard=htmlspecialchars($_POST['nameoncard']);
+                    if (!preg_match("/^[a-zA-Z ]*$/",$nameoncard)) 
+                    {
+                        $err_nameoncard = "Valid Name Required";
+                        $flag=1;
+                    }
                     
                 }
 
@@ -68,6 +74,11 @@
                 else
                 {			
                     $cardno=htmlspecialchars($_POST['cardno']);
+                    if (!preg_match("/^[0-9]{11}+$/",$cardno)) 
+                    {
+                        $err_cardno = "Valid Number Required";
+                        $flag=1;
+                    }
                     
                 }
                 if(empty($_POST['ccv']))
@@ -78,6 +89,11 @@
                 else
                 {			
                     $ccv=htmlspecialchars($_POST['ccv']);
+                    if (!preg_match("/^[0-9]{3}+$/",$ccv)) 
+                    {
+                        $err_ccv = "Valid Number Required";
+                        $flag=1;
+                    }
                     
                 }    
             for($i = 0; $i < count($check_booking); ++$i) {
@@ -182,7 +198,7 @@
                 }
                 else
 
-                    echo '<script>alert("Something Went wrong!")</script>';
+                    echo '<script>alert("Please Fill All Fields Properly!")</script>';
             }
 
             
@@ -249,6 +265,7 @@
                 <tr>
                     <td>Name On Card</td>
                     <td><input type="text" name="nameoncard"></td>
+                    <td><span style="color:red"><?php echo $err_nameoncard;?></span></td>
                 </tr>
                 <tr>
                     <td>Choose Card</td>
@@ -263,10 +280,12 @@
                 <tr>
                     <td>Card Number</td>
                     <td><input type="text" name="cardno"></td>
+                    <td><span style="color:red"><?php echo $err_cardno;?></span></td>
                 </tr>
                 <tr>
                     <td>CCV</td>
                     <td><input type="text" name="ccv"></td>
+                    <td><span style="color:red"><?php echo $err_ccv;?></span></td>
                 </tr>
             </tbody>
         </table>
@@ -287,13 +306,13 @@
             </table>
         </form>
         <div class="footer">
-            <p style="position: absolute;">Hot Line : +88018356465 <br>
-               Facebook : www.facebook.com/tms_bd <br>
-               fax : 0245699
+            <p style="position: absolute;">Hot Line : +88012345678 <br>
+               Facebook : www.facebook.com/tourism_bd <br>
+               fax : 026666
             </p>
-            <p align="right">Powered by :Bengal software <br>
-               www.bgsoft.com.bd <br>
-               +8805412245  
+            <p align="right">Powered by :Tour Management <br>
+               www.tourism.com <br>
+               +8809612345  
             </p>
           </div>
     </body>
