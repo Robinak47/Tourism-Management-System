@@ -89,6 +89,11 @@
                 else
                 {			
                     $mobile=htmlspecialchars($_POST['mobile']);
+                    if (!preg_match("/^[0-9]{11}+$/",$mobile)) 
+                    {
+                        $err_mobile = "Valid Number Required";
+                        $has_error=true;
+                    }
                     
                 }
 
@@ -134,6 +139,12 @@
                 else
                 {			
                     $passid=htmlspecialchars($_POST['passid']);
+                    if (!preg_match("/^[_a-zA-Z0-9]{11}+$/",$passid)) 
+                    {
+                        $err_passid = "Valid ID Required";
+                        $has_error=true;
+                    }
+                    
                 }
                 
                 
@@ -160,8 +171,6 @@
 
                     
                     editUser($cid, $name, $dob, '20', $mobile, $address, $passid, $gender, $email, $target_file);
-			header("Location:profile.php");
-
                     
                 }
                 else
@@ -205,22 +214,27 @@
                         <tr>
                             <td>Name: </td>
                             <td><input type="text" name="name" value="<?php echo $user["name"];?>"></td>
+                            <td><span style="color:red"><?php echo $err_name ?></span></td>
                         </tr>
                         <tr> 
                             <td>Date of birth: </td>
                             <td><input type="date" name="dob" value="<?php echo $user["dob"];?>"></td>
+                            <td><span style="color:red"><?php echo $err_dob ?></span></td>
                         </tr>
                         <tr>
                             <td>Mobile</td>
                             <td><input type="text" name="mobile" value="<?php echo $user["mobile"];?>"></td>
+                            <td><span style="color:red"><?php echo $err_mobile?></span></td>
                         </tr>
                         <tr>
                             <td>Address: </td>
                             <td><input type="text" name="address" value="<?php echo $user["address"];?>"></td>
+                            <td><span style="color:red"><?php echo $err_address ?></span></td>
                         </tr>
                         <tr>
                             <td>Passport ID: </td>
                             <td><input type="text" name="passid" value="<?php echo $user["passport_id"];?>"></td>
+                            <td><span style="color:red"><?php echo $err_passid ?></span></td>
                         </tr>
                         <tr>
                             <td>Gender: </td>
@@ -231,10 +245,12 @@
                                     <option value="Female">Female</option>
                                 </select>
                             </td>
+                            <td><span style="color:red"><?php echo $err_gender ?></span></td>
                         </tr>
                         <tr>
                             <td>Email: </td>
                             <td><input type="text" name="email" value="<?php echo $user["email"];?>"></td>
+                            <td><span style="color:red"><?php echo $err_email ?></span></td>
                         </tr>
                         <tr>
                         <td>Upload New Image:</td>
@@ -254,3 +270,5 @@
         
     </body>
 </html>
+
+
